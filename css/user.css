@@ -1,0 +1,23 @@
+.farfa-check-squar e{
+	size: 5px;
+}
+
+#pic {
+	float:left;
+	border:2px solid black;
+}
+
+h2 {
+	float:right;
+}
+
+#favorite {
+	padding-left: 120px;
+}
+#play-icon {
+	text-align: center;
+}
+
+.textbox {
+	margin-left: 200px;
+}

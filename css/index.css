@@ -1,0 +1,47 @@
+.container {
+  padding-top: 3em;
+}
+
+.home-section {
+  background-color: #f8f9fa;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.home-section-header {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.home-sidebar-entry {
+  padding-bottom: 0.6rem;
+}
+
+.home-sidebar-entry-album-art {
+  max-width: 100%; 
+}
+
+.home-sidebar-entry-album {
+  margin-bottom: 0;
+}
+
+.home-sidebar-entry-artist {
+  color: gray;
+}
+
+.fa-arrow-up {
+  color: green;
+}
+
+.fa-arrow-down {
+  color: red;
+}
+
+.home-trending-entry {
+  padding: 1rem;
+  margin: -2px .5rem 0 .5rem !important;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
