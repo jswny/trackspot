@@ -1,20 +1,16 @@
 <html>
+  <head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="css/artist.css">
-
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-
+  <link rel="stylesheet" href="css/artist-rework.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-  <title>TrackSpot | Home</title>
-</head>
+
+  </head>
 
 <body>
   <!-- Begin Navbar -->
@@ -66,135 +62,239 @@
   </nav>
   <!-- End Navbar -->
 
-  <div class="grid-container">
-    <div>
-      <h2>Young Thug</h2>
-      <img src="images/young thug.jpg" style="width: 300px;height: 220px;">
-    </div>
-    <div>
-      <h2>Bio</h2>Jeffery Williams, also known as Young Thug, is an American rapper, singer, songwriter, and producer. He has
-      collaborated with many veteran rappers and achieved mainstream recognition around 2014 with several singles including
-      "Stoner" and "Danny Glover". In 2015, he released several installments to his Slime Season series which were followed
-      up by mixtapes Slime Season 3, I'm Up, and Jeffery in 2016. Thugger's career reached an all time high and later in
-      2017 he released another mixtape titled Beautiful Thugger Girls. </div>
-    <div>
-      <h2>Related Artists</h2>
-      <ul class="artist-ul">
-        <li class="artist-li">
-          <img src="images/future.jpg" style="width:50px; height:50px;">Future </li>
-        <li class="artist-li">
-          <img src="images/travis.jpg" style="width: 50px; height:50px;">Travis Scott</li>
-        <li class="artist-li">
-          <img src="images/migos.png" style="width: 50px; height: 50px;">Migos </li>
-        <li class="artist-li">
-          <img src="images/ty.jpg" style="width: 50px; height: 50px;">Ty Dolla $ign</li>
-        <li class="artist-li">
-          <img src="images/gucci.jpg" style="width: 50px; height: 50px;">Gucci Mane</li>
-        <li class="artist-li">
-          <img src="images/ferg.jpg" style="width: 50px; height: 50px;">A$AP Ferg</li>
-      </ul>
-    </div>
-  </div>
-  <div class="grid2">
-    <div>
-      <ul class="artist-ul">
-        <h2>Albums</h2>
-        <div>
-          <li class="artist-li">
-            <img src="images/slimey.jpg" style="width:100px; height:100px;">
-          </li> Super Slimey</div>
-        <div>
-          <li class="artist-li">
-            <img src="images/thugger.jpg" style="width:100px; height:100px;">
-          </li> Beautiful Thugger Girls</div>
-        <div>
-          <li class="artist-li">
-            <img src="images/jeffery.jpg" style="width:100px; height:100px;">
-          </li> Jeffery</div>
-        <div>
-          <li class="artist-li">
-            <img src="images/slime3.jpg" style="width:100px; height:100px;">
-          </li> Slime Season 3</div>
-        <div>
-          <li class="artist-li">
-            <img src="images/up.jpg" style="width:100px; height:100px;">
-          </li> I'm Up</div>
-      </ul>
-    </div>
-    <div>
-      <h3>Critic Score</h3>
-      <ul class="artist-ul">
-        <div class="div2">
-          <strong>63/100</strong>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5">
+
+        <div class="main-section">
+          <h2 class="header">Young Thug</h2>
+          <img class="artist-image" src="images/young thug.jpg">
         </div>
-        <div class="div2">
-          <strong>72/100</strong>
+
+        <div class="main-section">
+          <h2 class="header">Popular Albums</h2>
+          <div class="row titles">
+            <div class="col-4">
+              <h4 class="scores">Album</h4>
+            </div>
+            <div class="col-4">
+            <h4 class="scores">Critic Score</h4>
+            </div>
+            <div class="col-4">
+            <h4 class="scores">User Score</h4>
+            </div>
+          </div>
+          <div class="row album-entry">
+            <div class="col-2">
+              <img class="album-entry-image" src="images/slimey.jpg">
+            </div>
+            <div class="col-4">
+              <p class="album-entry-name">Super Slimey</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-critic-score">63/100</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-user-score">68/100</p>
+            </div>
+          </div>
+
+          <div class="row album-entry">
+            <div class="col-2">
+              <img class="album-entry-image" src="images/thugger.jpg">
+            </div>
+            <div class="col-4">
+              <p class="album-entry-name">Beautiful Thugger Girls</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-critic-score">72/100</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-user-score">75/100</p>
+            </div>
+          </div>
+
+          <div class="row album-entry">
+            <div class="col-2">
+              <img class="album-entry-image" src="images/jeffery.jpg">
+            </div>
+            <div class="col-4">
+              <p class="album-entry-name">Jeffery</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-critic-score">93/100</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-user-score">96/100</p>
+            </div>
+          </div>
+
+          <div class="row album-entry">
+            <div class="col-2">
+              <img class="album-entry-image" src="images/slime3.jpg">
+            </div>
+            <div class="col-4">
+              <p class="album-entry-name">Slime Season 3</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-critic-score">90/100</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-user-score">94/100</p>
+            </div>
+          </div>
+
+          <div class="row album-entry">
+            <div class="col-2">
+              <img class="album-entry-image" src="images/up.jpg">
+            </div>
+            <div class="col-4">
+              <p class="album-entry-name">I'm Up</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-critic-score">84/100</p>
+            </div>
+            <div class="col-3">
+              <p class="album-entry-user-score">73/100</p>
+            </div>
+          </div>
+
         </div>
-        <div class="div2">
-          <strong>93/100</strong>
+      </div>
+      <div class="col-sm-4">
+        <div class="bio-section">
+          <h2 class="header">Bio</h2>
+          <p class="bio">Jeffery Williams, also known as Young Thug, is an American rapper, singer, songwriter, and producer. He has collaborated with many veteran rappers and achieved mainstream recognition around 2014 with several singles including "Stoner" and "Danny Glover". In 2015, he released several installments to his Slime Season series which were followed up by mixtapes Slime Season 3, I'm Up, and Jeffery in 2016. Thugger's career reached an all time high and later in 2017 he released another mixtape titled Beautiful Thugger Girls.</p>
         </div>
-        <div class="div2">
-          <strong>90/100</strong>
+        <div class="top-songs-section">
+          <h2 class="header">Top Songs</h2>
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/birds.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Pick Up The Phone </p>
+            </div>
+          </div>
+
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/havana2.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Havana (feat. Young Thug)</p>
+            </div>
+          </div>
+
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/thugger.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Relationship (feat. Future)</p>
+            </div>
+          </div>
+
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/slimey.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Patek Water (feat. Offset)</p>
+            </div>
+          </div>
+
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/jeffery.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Wyclef Jean</p>
+            </div>
+          </div>
+
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/friend.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Best Friend</p>
+            </div>
+          </div>
+
+          <div class="row top-songs-entry">
+            <div class="col-3">
+              <img class="top-song-image" src="images/life.jpg">
+            </div>
+            <div class="col-9">
+              <p class="top-song-name">Ice Melts</p>
+            </div>
+          </div>
+
+
         </div>
-        <div class="div2">
-          <strong>84/100</strong>
+
+      </div>
+      <div class="col-sm-3">
+        <div class="related-artists">
+          <h2 class="header">Related Artists</h2>
+            <div class="row related-artist-entries">
+              <div class="col-3">
+                <img class="related-artist-image" src="images/future.jpg">
+              </div>
+              <div class="col-9">
+                <p class="related-artist-name">Future</p>
+              </div>
+            </div>
+
+            <div class="row related-artist-entries">
+              <div class="col-3">
+                <img class="related-artist-image" src="images/travis.jpg">
+              </div>
+              <div class="col-9">
+                <p class="related-artist-name">Travis Scott</p>
+              </div>
+            </div>
+
+            <div class="row related-artist-entries">
+              <div class="col-3">
+                <img class="related-artist-image" src="images/Migos.png">
+              </div>
+              <div class="col-9">
+                <p class="related-artist-name">Migos</p>
+              </div>
+            </div>
+
+            <div class="row related-artist-entries">
+              <div class="col-3">
+                <img class="related-artist-image" src="images/ferg.jpg">
+              </div>
+              <div class="col-9">
+                <p class="related-artist-name">A$AP Ferg</p>
+              </div>
+            </div>
+
+            <div class="row related-artist-entries">
+              <div class="col-3">
+                <img class="related-artist-image" src="images/gucci.jpg">
+              </div>
+              <div class="col-9">
+                <p class="related-artist-name">Gucci Mane</p>
+              </div>
+            </div>
+
+            <div class="row related-artist-entries">
+              <div class="col-3">
+                <img class="related-artist-image" src="images/ty.jpg">
+              </div>
+              <div class="col-9">
+                <p class="related-artist-name">Ty Dolla $ign</p>
+              </div>
+            </div>
         </div>
-      </ul>
-    </div>
-    <div>
-      <h3>User Score</h3>
-      <ul class="artist-ul">
-        <div class="div2">
-          <strong>68/100</strong>
-        </div>
-        <div class="div2">
-          <strong>75/100</strong>
-        </div>
-        <div class="div2">
-          <strong>96/100</strong>
-        </div>
-        <div class="div2">
-          <strong>94/100</strong>
-        </div>
-        <div class="div2">
-          <strong>73/100</strong>
-        </div>
-      </ul>
-    </div>
-    <div>
-      <ul class="artist-ul">
-        <h2>Top Songs</h2>
-        <div class="div3">
-          <img src="images/birds.jpg" style="width:50px; height:50px;">Pick Up The Phone
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-        <div class="div3">
-          <img src="images/havana.jpg" style="width:50px; height:50px;">Havana (feat. Young Thug)
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-        <div class="div3">
-          <img src="images/thugger.jpg" style="width:50px; height:50px;">Relationship (feat. Future)
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-        <div class="div3">
-          <img src="images/slimey.jpg" style="width:50px; height:50px;">Patek Water (feat. Offset)
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-        <div class="div3">
-          <img src="images/jeffery.jpg" style="width:50px; height:50px;">Wyclef Jean
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-        <div class="div3">
-          <img src="images/friend.jpg" style="width:50px; height:50px;">Best Friend
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-        <div class="div3">
-          <img src="images/life.jpg" style="width:50px; height:50px;">Ice Melts
-          <img src="images/play2.png" style="width:30px; height:25px;">
-        </div>
-      </ul>
+      </div>
     </div>
   </div>
 </body>
-
 </html>
+
