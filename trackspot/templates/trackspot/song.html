@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Song{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/song.css' %}">{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-8">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3> Rockstar </h3>
+          <h5>Post Malone</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7">
+          <p>
+            <img src="images/Rockstar.jpg" height="350" width="400" id="Picture">
+          </p>
+        </div>
+        <div class="col-sm-5">
+          <p id="Description"> Description: "Rockstar" is a song by American rapper Post Malone. It was released on September 15, 2017 by Republic
+            Records as the first single from his upcoming second studio album Beerbongs & Bentleys (2018). The track features
+            a guest verse from fellow American rapper 21 Savage. The track reached number one on the US Billboard Hot 100,
+            and reached the top spot in several other countries, including Australia, Canada, Portugal, Ireland, New Zealand,
+            Sweden, Norway, Finland, Denmark and the United Kingdom. It became both Post Malone and 21 Savage's first number-one
+            single in all the countries mentioned.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>
+              <h3>
+                <span class="badge badge-success">Critic Score: 9.00</span>
+              </h3>
+            </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sm-1">Critic</th>
+                  <th class="col-sm-6">Review</th>
+                  <th class="col-sm-5">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Forbes</td>
+                  <td>Good song and good beat.</td>
+                  <td>
+                    8/10
+                  </td>
+                </tr>
+                <tr>
+                  <td>80 year old man</td>
+                  <td>This song is very ignorant. </td>
+                  <td>
+                    3/10
+                  </td>
+                </tr>
+                <td>Radio Person</td>
+                <td>This song is a one hit wonder and this artist will not last, but it is still a good piece of music.</td>
+                <td>
+                  7/10
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-sm-6">
+            <p>
+              <h3>
+                <span class="badge badge-success">User Score: 8.00</span>
+              </h3>
+            </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sm-1">User</th>
+                  <th class="col-sm-6">Review</th>
+                  <th class="col-sm-5">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hipster</td>
+                  <td>Yooooooo this song is awesommmeeeeeee.</td>
+                  <td>
+                    10/10
+                  </td>
+                </tr>
+                <tr>
+                  <td>Mother</td>
+                  <td>I would never want my kids listening to this song!</td>
+                  <td>
+                    2/10
+                  </td>
+                </tr>
+                <tr>
+                  <td>Umass Student</td>
+                  <td>This is the first song I am going to play at a party. </td>
+                  <td>
+                    9/10
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="row">
+
+      <p id="AlbumLink">
+        Link to Album is:
+        <a href="www.Beerbongs & Bentleys.com">Beerbongs & Bentleys</a>
+      </p>
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>
+              Song List
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="www.Beerbongs & Bentleys.com">Money Made Me Do It</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="www.Beerbongs & Bentleys.com">Congratulations</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="www.Beerbongs & Bentleys.com">Candy Paint</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="www.Beerbongs & Bentleys.com">Bank Account</td>
+          </tr>
+    </div>
+  </div>
+</div>
+{% endblock %}
