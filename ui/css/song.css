@@ -1,46 +1,69 @@
-div h1 {
-	font-size: 50pt;
+.grid-container {
+	display: grid;
+	grid-template-columns: 365px 450px auto;
+	grid-template-rows: 25% auto;
+	grid-gap: 20px;
+	background-color: #FFFFFF;
+	grid-column-gap: 25px;
+	grid-row-gap: 25px;
+}
+
+.grid-container>div {
+	background-color: #F5EEEE;
+	text-align: bottom;
+	padding: 30px;
+	font-style: 20px;
+}
+
+.grid2 {
+	display: grid;
+	grid-template-columns: 250px 280px 280px auto;
+	grid-template-rows: 20% 20% 20% 20% 20%;
+	background-color: #FFFFFF;
+	grid-column-gap: 30px;
+	grid-row-gap: 5px;
+}
+
+.grid2>div {
+	background-color: #F5EEEE;
+	text-align: bottom;
+	padding: 30px;
+	font-style: 20px;
+}
+
+.song-ul {
+	margin: 0 auto;
 	text-align: center;
 }
 
-img#Picture {
-	margin-left: 10px;
+.song-ul>div {
+	font-size: 20px;
+	text-align: left;
+	padding-bottom: 30px;
 }
 
-table#Reviews {
-	margin-left: 10px;
-	background-color: #eee;
-	border: 3px solid black;
+.song-ul>li {
+	font-size: 20px;
+	padding-bottom: 50px;
+	text-align: left;
 }
 
-th {
-	font-size: 20pt;
+.div2 {
+	padding-top: 75px;
+	padding-bottom: 70px;
 }
 
-td {
-	border: 1px solid black;
+.div3 {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
-p#Description {
-	word-wrap: break-word;
-	width: 300px;
-	font-size: 10pt;
+.song-li {
 	display: inline-block;
+	vertical-align: top;
+	padding-right: 100px;
 }
 
-table#AggregateScore {
-	background-color: #eee;
-	font-size: 20pt;
-}
-
-p#AlbumLink {
-	font-size: 18pt;
-}
-
-ul#RelatedSongs {
-	font-size: 18pt;
-}
-
-p#RelatedTitle {
-	font-size: 18pt;
+h2 {
+	text-align: left;
 }
