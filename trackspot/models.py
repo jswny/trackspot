@@ -59,11 +59,11 @@ class Review(models.Model):
         If both album and song are null then the return is null.
         Otherwise, returns the opposite of whichever field is null between album and song in string form.
         """
-        if self.album == null and self.song == null:
-            return null
-        elif self.album == null:
+        if self.album is None and self.song is None:
+            return None
+        elif self.album is None:
             return 'song'
-        elif self.song == null:
+        elif self.song is None:
             return 'album'
 
 class User(models.Model):
