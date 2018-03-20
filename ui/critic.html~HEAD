@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/critic.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <title>TrackSpot | Critic</title>
+  </head>
+
+  <body>
+
+    <!-- Begin Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">TrackSpot</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artist.html">Artists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="album.html">Albums</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="song.html">Songs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="critic.html">Critics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="user.html">Users</a>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-user-plus"></i> Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Start UI -->
+      <div class="container">
+		<div class="row">
+        	<div class="col-sm-9">
+        		<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-4">
+        					<p>
+        						<img src="images/empty_Person.jpg" style="width:250px;height:250px;"></img>
+        					</p>
+        					<div class="row">
+        						<h2>	
+        						Organization: Metacritic
+        						</h2>
+        					</div>
+        					<div class="row">
+									<h5>
+									Ratings Given This Month: 14
+									</h5>
+							</div>
+						</div>
+        				<div class="col-sm-3">
+        					<h1>
+        						Critic 1
+        					</h1>
+        					<div class = "row">
+        						<div class="span8">
+        							I am an authorized critic here and this is my bio. 
+        						</div>
+        					</div>
+        					<div class="row align-items-end">
+          						Average score: 3.2 &#9733;&#9733;&#9733;&#9734;&#9734;
+							</div>
+        				</div>
+        				<div class="col-sm-2">
+							<p>
+								<h5>
+									<span class="badge badge-secondary">Certified critic: Yes
+									</span>
+								</h5>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+						<div class="col-sm-2">
+							<p>
+								<h4>
+									Similar Critics
+								</h4>
+								<h5>
+          						<img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;">
+          						Critic 2
+          						<img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;">
+          						Critic 3
+								<img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;">
+          						Critic 4
+          						<img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;">
+          						Critic 5
+          						<img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;">
+          						Critic 6
+          						<img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;">
+          						Critic 7
+          						</h5>
+          					</p>
+						</div>
+					</div>
+      <div class="row">
+      	<div class="col-sm-5">
+        	<h2>
+          		Recent Reviews
+          	</h2>
+          </div>
+      </div>
+          	<div class="row">
+      	<div class="col-sm-5">
+          		<img src="images/klamar.jpg" alt="Kendrick" style="width:60px; height:60px;" align:left>
+          	<h5>
+          		Damn
+          	</h5>
+          	<h7>
+          	 4.1/5.0 &#9733;&#9733;&#9733;&#9733;&#9734;
+          </h7>
+        	<p>
+            	This is a good rating.
+        	</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="images/tswift.jpg" alt="Taylor Swift" style="width:60px;height:60px;" align:left>
+          <h5>
+          Reputation
+          </h5>
+          <h7>
+          	 1.2/5.0 &#9733;&#9734;&#9734;&#9734;&#9734;
+          </h7>
+          <p>
+          This is a bad rating.
+      		</p>
+        </div>
+</div>
+  </body>
+
+</html>
