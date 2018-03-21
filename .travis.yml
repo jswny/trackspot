@@ -3,4 +3,4 @@ python: "3.6"
 install:
   - pip install -q django==2.0.2 pylint-django
 script:
-  - pylint bigbinarybrand trackspoat && python manage.py check
+  - pylint bigbinarybrand trackspot && python manage.py check
