@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Album{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/album.css' %}">{% endblock %}
+
+{% block content %}
+<br>
+<div class="row">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-8">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4>Mellon Collie and the Infinite Sadness (1995)</h4>
+          <h6>Smashing Pumpkins</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7">
+          <p>
+            <img src="{% static 'images/smashing_pumpkins_melloncollie.jpg' %}" class="img-thumbnail" style="width:100%">
+          </p>
+        </div>
+        <div class="col-sm-5">
+          <p>Mellon Collie and the Infinite Sadness is the third studio album by American alternative rock band The Smashing
+            Pumpkins, released on October 23, 1995 in the United Kingdom and a day later in the United States on Virgin Records.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>
+              <h4>
+                <span class="badge badge-success">Critic Score : 97 / 100</span>
+              </h4>
+            </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sm-1">Critic</th>
+                  <th class="col-sm-6">Review</th>
+                  <th class="col-sm-5">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Danny Park</td>
+                  <td>A massive, sprawling and wildly uneven album</td>
+                  <td>
+                    8/10
+                  </td>
+                </tr>
+                <tr>
+                  <td>Joe Sweeny</td>
+                  <td>A beautiful masterpiece!</td>
+                  <td>
+                    10/10
+                  </td>
+                </tr>
+                <td>Daniel Macdonald</td>
+                <td>I love how it comes with basically two different moods. Dawn to dusk and twlight to moon light.</td>
+                <td>
+                  8/10
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-6">
+            <p>
+              <h4>
+                <span class="badge badge-success">User Score : 87 / 100</span>
+              </h4>
+            </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sm-1">User</th>
+                  <th class="col-sm-6">Review</th>
+                  <th class="col-sm-5">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Aric Huang</td>
+                  <td>Definitely highly recommended.</td>
+                  <td>
+                    8/10
+                  </td>
+                </tr>
+                <tr>
+                  <td>Cameron Scigliano</td>
+                  <td>Mellon Collie is an amazing work of art! It has an unforgetable sound and vibe.</td>
+                  <td>
+                    10/10
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tommy Do</td>
+                  <td>The drums and bass are louder in the mix and great clarity in vocals and sound. </td>
+                  <td>
+                    6/10
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <p>
+                <h3>
+                  <span class="badge badge-primary">Critic Score : 95 / 100</span>
+                </h3>
+              </p>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row">
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>
+              Song List
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mellon Collie and the Infinite Sadness</td>
+          </tr>
+          <tr>
+            <td>Tonight, Tonight</td>
+          </tr>
+          <tr>
+            <td>Jellybelly</td>
+          </tr>
+          <tr>
+            <td>Zero</td>
+          </tr>
+          <tr>
+            <td>Here Is No Why</td>
+          </tr>
+          <tr>
+            <td>Bullet With Butterfly Wings</td>
+          </tr>
+          <tr>
+            <td>To Forgive</td>
+          </tr>
+          <tr>
+            <td>Fuck You (An Ode to No One)</td>
+          </tr>
+          <tr>
+            <td>Love</td>
+          </tr>
+          <tr>
+            <td>Cupid de Locke</td>
+          </tr>
+          <tr>
+            <td>Galapogos</td>
+          </tr>
+          <tr>
+            <td>Muzzle</td>
+          </tr>
+          <tr>
+            <td>Porcelina of the Vast Oceans</td>
+          </tr>
+          <tr>
+            <td>Take Me Down</td>
+          </tr>
+          <tr>
+            <td>Where Boys Fear to Tread</td>
+          </tr>
+          <tr>
+            <td>Bodies</td>
+          </tr>
+          <tr>
+            <td>Thirty-Three</td>
+          </tr>
+          <tr>
+            <td>In the Arms of Sleep</td>
+          </tr>
+          <tr>
+            <td>1979</td>
+          </tr>
+          <tr>
+            <td>Tales of a Scorched Earth</td>
+          </tr>
+          <tr>
+            <td>Thru the Eyes of Ruby</td>
+          </tr>
+          <tr>
+            <td>Stumbleine</td>
+          </tr>
+          <tr>
+            <td>X.Y.U.</td>
+          </tr>
+          <tr>
+            <td>We Only Come out at Night</td>
+          </tr>
+          <tr>
+            <td>Beautiful</td>
+          </tr>
+          <tr>
+            <td>Lily (My One and Only)</td>
+          </tr>
+          <tr>
+            <td>By Starlight</td>
+          </tr>
+          <tr>
+            <td>Farewell and Goodnight</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/user.css' %}">{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Profile</h1>
+  </div>
+  <div class="col-lg-6">
+    <h1 id="favorite">Favorite Songs</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 profile">
+    <div class='col-lg-4'>
+      <img id="pic" src=https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png>
+    </div>
+    <div class="col-lg-8 textbox">
+      <p>Name: Tommy Do</p>
+      <p>Age: 21</p>
+      <p>Location: Boston, MA</p>
+      <p>Number of Reviews: 56</p>
+      <p>Certified Critic :
+        <i class="far fa-check-square style=" style="font-size:25px"></i>
+        </i>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="row">
+      <div class="col-lg-4">
+        <b>Name</b>
+      </div>
+      <div class="col-lg-4">
+        <b>Artist</b>
+      </div>
+      <div id="play-icon" class="col-lg-4">
+        <b>Play</b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">Perfect</div>
+      <div class="col-lg-4">Ed Sherran</div>
+      <div id="play-icon" class="col-lg-4">
+        <i class="far fa-play-circle"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">Plain Jain</div>
+      <div class="col-lg-4">A$AP Ferg</div>
+      <div id="play-icon" class="col-lg-4">
+        <i class="far fa-play-circle"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">No Option</div>
+      <div class="col-lg-4">Post Malone</div>
+      <div id="play-icon" class="col-lg-4">
+        <i class="far fa-play-circle"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">Good Old Days</div>
+      <div class="col-lg-4">Macklemore, Kesha, Gemini</div>
+      <div id="play-icon" class="col-lg-4">
+        <i class="far fa-play-circle"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">Do Re Mi</div>
+      <div class="col-lg-4">Blackbear, Gucci Mane</div>
+      <div id="play-icon" class="col-lg-4">
+        <i class="far fa-play-circle"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">Bad at Love</div>
+      <div class="col-lg-4">Halsey</div>
+      <div id="play-icon" class="col-lg-4">
+        <i class="far fa-play-circle"></i>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Reviews</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-2">
+    <b>Song/Album</b>
+  </div>
+  <div class="col-lg-8">
+    <b>Review</b>
+  </div>
+  <div class="col-lg-2">
+    <b>Rating</b>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-2">New York City</div>
+  <div class="col-lg-8">This song is awesome. It has an awesome build up into a nice drop. Beautiful song.</div>
+  <div class="col-lg-2">9.5/10</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-2">Location</div>
+  <div class="col-lg-8">This song has a super chill vibe.</div>
+  <div class="col-lg-2">7.5/10</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-2">Young Dumb and Broke</div>
+  <div class="col-lg-8">Young Dumb and Broke is extremely catchy. Kalid's voice is amazing</div>
+  <div class="col-lg-2">10/10</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-2">Look What You Made me Do</div>
+  <div class="col-lg-8">This is by far one of Taylor Swifts worst songs. It makes me cringe.</div>
+  <div class="col-lg-2">7.5/10</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,65 @@
+.container {
+  padding-top: 3em;
+}
+
+.artist-pic{
+	background-color: #f8f9fa;
+	padding-left: 1rem;
+ 	padding-right: 1rem;
+  	padding-bottom: 1rem;
+ 	margin-bottom: 2rem;
+}
+
+.header {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.album-entry-image{
+	display: block;
+  	max-width: 100%;
+  	height: auto;
+  	padding-bottom: 1rem;
+}
+
+.related-artist-image{
+	display: block;
+  	max-width: 100%;
+  	height: auto;
+  	padding-bottom: 1rem;
+}
+
+.artist-image{
+	display: block;
+  	max-width: 100%;
+  	height: auto;	
+}
+
+.album-entry-critic-score{
+
+}
+
+.album-entry-user-score{
+
+}
+
+.album-entry-name{
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}
+
+
+.related-artist-name{
+	padding-bottom: 1rem;
+}
+
+.top-song-image{
+	display: block;
+  	max-width: 100%;
+  	height: auto;	
+}
+
+.top-song-name{
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}

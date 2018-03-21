@@ -1,4 +1,4 @@
-.grid-container {
+.grid-container {
 	display: grid;
 	grid-template-columns: 365px 450px auto;
 	grid-template-rows: 25% auto;
@@ -31,18 +31,18 @@
 	font-style: 20px;
 }
 
-.artist-ul {
+.song-ul {
 	margin: 0 auto;
 	text-align: center;
 }
 
-.artist-ul>div {
+.song-ul>div {
 	font-size: 20px;
 	text-align: left;
 	padding-bottom: 30px;
 }
 
-.artist-ul>li {
+.song-ul>li {
 	font-size: 20px;
 	padding-bottom: 50px;
 	text-align: left;
@@ -58,7 +58,7 @@
 	padding-bottom: 20px;
 }
 
-.artist-li {
+.song-li {
 	display: inline-block;
 	vertical-align: top;
 	padding-right: 100px;
