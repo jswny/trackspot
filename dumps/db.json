@@ -1,0 +1,78 @@
+[
+    {
+        "model": "trackspot.artist",
+        "pk": 1,
+        "fields": {
+            "name": "Kanye West",
+            "bio": "Kanye Omari West (/\u02c8k\u0251\u02d0nje\u026a/;[1] born June 8, 1977) is an American rapper, singer, songwriter, record producer, fashion designer, and entrepreneur."
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 2,
+        "fields": {
+            "name": "Flatbush Zombies",
+            "bio": "Flatbush Zombies is an American hip hop group from the Flatbush section of Brooklyn, New York City, formed in 2010. The group is composed of rappers Meechy Darko, Zombie Juice and Erick Arc Elliott, the latter of whom also serves as their regular record producer. The trio are part of the East Coast hip hop movement known as \"Beast Coast\", which also consists of fellow Brooklyn-based rap groups The Underachievers and Pro Era."
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 1,
+        "fields": {
+            "name": "The College Dropout",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg",
+            "release_date": "2004-02-10",
+            "artist": 1
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 2,
+        "fields": {
+            "name": "Late Registration",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f4/Late_registration_cd_cover.jpg",
+            "release_date": "2005-08-30",
+            "artist": 1
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 3,
+        "fields": {
+            "name": "Graduation",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg",
+            "release_date": "2007-09-11",
+            "artist": 1
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 4,
+        "fields": {
+            "name": "808s & Heartbreak",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f1/808s_%26_Heartbreak.png",
+            "release_date": "2008-11-24",
+            "artist": 1
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 5,
+        "fields": {
+            "name": "My Beautiful Dark Twisted Fantasy",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f0/My_Beautiful_Dark_Twisted_Fantasy.jpg",
+            "release_date": "2009-11-22",
+            "artist": 1
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 6,
+        "fields": {
+            "name": "Vacation in Hell",
+            "image_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F00a635e00775ac2b6f70e9ac9439e1d",
+            "release_date": "2018-04-22",
+            "artist": 2
+        }
+    }
+]

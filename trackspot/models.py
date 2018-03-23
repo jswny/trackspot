@@ -14,7 +14,7 @@ class Artist(models.Model):
 
 class Album(models.Model):
     name = models.CharField(help_text='Enter a name for this album', max_length=100)
-    image_url = models.CharField(help_text='Enter a URL for the album art for this album', max_length=100, null=True)
+    image_url = models.CharField(help_text='Enter a URL for the album art for this album', max_length=500, null=True)
     release_date = models.DateField(null=True)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
     # genres -- connected via genre foreign keys
