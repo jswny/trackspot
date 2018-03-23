@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.urls import reverse
 
-# TODO: add reverse URL mappings (may require views first)
 # TODO: integrate users/critics with Django admin stuff?
 
 class Artist(models.Model):
@@ -12,9 +12,15 @@ class Artist(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        """
+        return reverse('artist', args=[str(self.id)])
+
 class Album(models.Model):
     name = models.CharField(help_text='Enter a name for this album', max_length=100)
-    image_url = models.CharField(help_text='Enter a URL for the album art for this album', max_length=100, null=True)
+    image_url = models.CharField(help_text='Enter a URL for the album art for this album', max_length=500, null=True)
     release_date = models.DateField(null=True)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
     # genres -- connected via genre foreign keys
@@ -23,6 +29,12 @@ class Album(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        """
+        return reverse('album', args=[str(self.id)])
 
 class Song(models.Model):
     album = models.ForeignKey('Album', on_delete=models.CASCADE)
@@ -33,6 +45,12 @@ class Song(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        """
+        return reverse('song', args=[str(self.id)])
 
 class Genre(models.Model):
     name = models.CharField(help_text='Enter a name for this genre', max_length=100)
@@ -75,6 +93,18 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        """
+        return reverse('user', args=[str(self.id)])
+
 class Critic(User):
     # inherits all other field from User class
     organization = models.CharField(help_text='Enter a location for this critic', max_length=50)
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        """
+        return reverse('critic', args=[str(self.id)])
