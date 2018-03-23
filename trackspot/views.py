@@ -23,6 +23,7 @@ def get_future_album_releases():
     today = datetime.date.today()
     return Album.objects.filter(release_date__gt=today)
 
+# TODO: link items via URLs
 def index(request):
     today = datetime.date.today()
     new_releases = get_current_album_releases().order_by('release_date')[:5]
@@ -39,17 +40,22 @@ def index(request):
         }
     )
 
-def album(request):
+def album(request, **kwargs):
+    album_id = kwargs['pk']
     return render(request, 'trackspot/album.html')
 
-def artist(request):
+def artist(request, **kwargs):
+    artist_id = kwargs['pk']
     return render(request, 'trackspot/artist.html')
 
-def critic(request):
-    return render(request, 'trackspot/critc.html')
+def critic(request, **kwargs):
+    critic_id = kwargs['pk']
+    return render(request, 'trackspot/critic.html')
 
-def song(request):
+def song(request, **kwargs):
+    song_id = kwargs['pk']
     return render(request, 'trackspot/song.html')
 
-def user(request):
+def user(request, **kwargs):
+    user_id = kwargs['pk']
     return render(request, 'trackspot/user.html')
