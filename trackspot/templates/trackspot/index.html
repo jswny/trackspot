@@ -8,7 +8,7 @@
 <div class="row">
   <div class="col-sm-4">
     
-    <div class=" home-section">
+    <div class="home-section">
       <h2 class="home-section-header">New Releases</h2>
 
       {% if new_releases %}
@@ -19,8 +19,12 @@
             <img class="home-sidebar-entry-album-art" src="{{album.image_url}}" />
           </div>
           <div class="col-9">
-            <p class="home-sidebar-entry-album">{{album.name}}</p>
-            <p class="home-sidebar-entry-artist">{{album.artist.name}}</p> 
+              <p class="home-sidebar-entry-album">
+                  <a href="{{album.get_absolute_url}}">{{album.name}}</a>
+                </p>
+                <p class="home-sidebar-entry-artist">
+                  <a href="{{album.artist.get_absolute_url}}">{{album.artist.name}}</a>
+                </p> 
           </div> 
         </div>
 
@@ -43,8 +47,12 @@
             <img class="home-sidebar-entry-album-art" src="{{album.image_url}}" />
           </div>
           <div class="col-5">
-              <p class="home-sidebar-entry-album">{{album.name}}</p>
-              <p class="home-sidebar-entry-artist">{{album.artist.name}}</p> 
+              <p class="home-sidebar-entry-album">
+                <a href="{{album.get_absolute_url}}">{{album.name}}</a>
+              </p>
+              <p class="home-sidebar-entry-artist">
+                <a href="{{album.artist.get_absolute_url}}">{{album.artist.name}}</a>
+              </p> 
           </div> 
           <div class="col-3">
             <p>{{album.release_date}}</p> 
@@ -78,8 +86,8 @@
 
         <div class="row home-trending-entry">
           <div class="col-sm-1">{{forloop.counter}}</div>
-          <div class="col-sm-5">{{song.name}}</div>
-          <div class="col-sm-5">{{song.album.artist.name}}</div>
+          <div class="col-sm-5"><a href="{{song.get_absolute_url}}">{{song.name}}</a></div>
+          <div class="col-sm-5"><a href="{{song.album.artist.get_absolute_url}}">{{song.album.artist.name}}</a></div>
           <div class="col-sm-1"><i class="fas fa-arrow-up"></i></div>
         </div>
 
