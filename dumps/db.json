@@ -3,45 +3,77 @@
         "model": "trackspot.artist",
         "pk": 1,
         "fields": {
-            "name": "Kanye West",
-            "bio": "Kanye Omari West (/\u02c8k\u0251\u02d0nje\u026a/;[1] born June 8, 1977) is an American rapper, singer, songwriter, record producer, fashion designer, and entrepreneur."
+            "name": "Bill Evans",
+            "bio": "William John Evans was an American jazz pianist and composer who mostly worked in a trio setting. Evans' use of impressionist harmony, inventive interpretation of traditional jazz repertoire, block chords, and trademark rhythmically independent, \"singing\" melodic lines continue to influence jazz pianists today."
         }
     },
     {
         "model": "trackspot.artist",
         "pk": 2,
         "fields": {
-            "name": "Flatbush Zombies",
-            "bio": "Flatbush Zombies is an American hip hop group from the Flatbush section of Brooklyn, New York City, formed in 2010. The group is composed of rappers Meechy Darko, Zombie Juice and Erick Arc Elliott, the latter of whom also serves as their regular record producer. The trio are part of the East Coast hip hop movement known as \"Beast Coast\", which also consists of fellow Brooklyn-based rap groups The Underachievers and Pro Era."
+            "name": "Wes Montgomery",
+            "bio": "John Leslie \"Wes\" Montgomery (March 6, 1923 \u2013 June 15, 1968) was an American jazz guitarist. He is widely considered one of the major jazz guitarists, emerging after such seminal figures as Django Reinhardt and Charlie Christian and influencing countless others."
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 3,
+        "fields": {
+            "name": "Keith Jarrett",
+            "bio": "Keith Jarrett (born May 8, 1945) is an American jazz and classical music pianist. Jarrett started his career with Art Blakey, moving on to play with Charles Lloyd and Miles Davis. Since the early 1970s he has enjoyed a great deal of success as a group leader and a solo performer in jazz, jazz fusion, and classical music."
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 4,
+        "fields": {
+            "name": "Pat Metheny Group",
+            "bio": "Patrick Bruce \"Pat\" Metheny is an American jazz guitarist and composer. He is the leader of the Pat Metheny Group and is also involved in duets, solo works, and other side projects. His style incorporates elements of progressive and contemporary jazz, Latin jazz, and jazz fusion."
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 5,
+        "fields": {
+            "name": "Smashing Pumpkins",
+            "bio": "The Smashing Pumpkins are an American alternative rock band from Chicago, Illinois. Formed in 1988 by frontman Billy Corgan and James Iha, the band included D'arcy Wretzky and Jimmy Chamberlin in its original incarnation."
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 6,
+        "fields": {
+            "name": "Ivo Pogorelich",
+            "bio": "Ivo Pogoreli\u0107 is a Croatian pianist born in Serbia."
         }
     },
     {
         "model": "trackspot.album",
         "pk": 1,
         "fields": {
-            "name": "The College Dropout",
-            "image_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg",
-            "release_date": "2004-02-10",
-            "artist": 1
+            "name": "The Incredible Jazz Guitar of Wes Montgomery",
+            "image_url": "https://cps-static.rovicorp.com/3/JPG_500/MI0001/827/MI0001827146.jpg?partner=allrovi.com",
+            "release_date": "1960-01-26",
+            "artist": 2
         }
     },
     {
         "model": "trackspot.album",
         "pk": 2,
         "fields": {
-            "name": "Late Registration",
-            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f4/Late_registration_cd_cover.jpg",
-            "release_date": "2005-08-30",
-            "artist": 1
+            "name": "The Out-of-Towners",
+            "image_url": "https://cps-static.rovicorp.com/3/JPG_500/MI0002/150/MI0002150344.jpg?partner=allrovi.com",
+            "release_date": "2004-08-31",
+            "artist": 3
         }
     },
     {
         "model": "trackspot.album",
         "pk": 3,
         "fields": {
-            "name": "Graduation",
-            "image_url": "https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg",
-            "release_date": "2007-09-11",
+            "name": "Waltz for Debby",
+            "image_url": "https://cps-static.rovicorp.com/3/JPG_500/MI0002/062/MI0002062546.jpg?partner=allrovi.com",
+            "release_date": "1962-01-01",
             "artist": 1
         }
     },
@@ -49,30 +81,369 @@
         "model": "trackspot.album",
         "pk": 4,
         "fields": {
-            "name": "808s & Heartbreak",
-            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f1/808s_%26_Heartbreak.png",
-            "release_date": "2008-11-24",
-            "artist": 1
+            "name": "Offramp",
+            "image_url": "https://cps-static.rovicorp.com/3/JPG_500/MI0002/031/MI0002031769.jpg?partner=allrovi.com",
+            "release_date": "1981-10-01",
+            "artist": 4
         }
     },
     {
         "model": "trackspot.album",
         "pk": 5,
         "fields": {
-            "name": "My Beautiful Dark Twisted Fantasy",
-            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f0/My_Beautiful_Dark_Twisted_Fantasy.jpg",
-            "release_date": "2009-11-22",
-            "artist": 1
+            "name": "Mellon Collie and the Infinite Sadness",
+            "image_url": "https://cps-static.rovicorp.com/3/JPG_500/MI0001/882/MI0001882592.jpg?partner=allrovi.com",
+            "release_date": "1995-10-24",
+            "artist": 5
         }
     },
     {
         "model": "trackspot.album",
         "pk": 6,
         "fields": {
+            "name": "Mozart: Klaviersonaten",
+            "image_url": "https://cps-static.rovicorp.com/3/JPG_500/MI0002/993/MI0002993026.jpg?partner=allrovi.com",
+            "release_date": "1995-01-01",
+            "artist": 6
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 1,
+        "fields": {
+            "album": 1,
+            "name": "Airegin",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 2,
+        "fields": {
+            "album": 1,
+            "name": "D-Natural Blues",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 3,
+        "fields": {
+            "album": 1,
+            "name": "West Coast Blues",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 4,
+        "fields": {
+            "album": 2,
+            "name": "Five Brothers",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 5,
+        "fields": {
+            "album": 2,
+            "name": "The Out of Towners",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 6,
+        "fields": {
+            "album": 3,
+            "name": "Waltz for Debby",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 7,
+        "fields": {
+            "album": 3,
+            "name": "My Foolish Heart",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 8,
+        "fields": {
+            "album": 3,
+            "name": "Some Other Time",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 9,
+        "fields": {
+            "album": 4,
+            "name": "Are You Going With Me?",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 10,
+        "fields": {
+            "album": 4,
+            "name": "James",
+            "description": "",
+            "genre": 1
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 11,
+        "fields": {
+            "album": 5,
+            "name": "Tonight, tonight",
+            "description": "",
+            "genre": 3
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 12,
+        "fields": {
+            "album": 5,
+            "name": "Bullet with Butterfly Wings",
+            "description": "",
+            "genre": 3
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 13,
+        "fields": {
+            "album": 6,
+            "name": "Piano Sonata in G major, KV 283",
+            "description": "",
+            "genre": 4
+        }
+    },
+    {
+        "model": "trackspot.song",
+        "pk": 14,
+        "fields": {
+            "album": 6,
+            "name": "Piano Sonata in A major, KV 331",
+            "description": "",
+            "genre": 4
+        }
+    },
+    {
+        "model": "trackspot.genre",
+        "pk": 1,
+        "fields": {
+            "name": "Jazz"
+        }
+    },
+    {
+        "model": "trackspot.genre",
+        "pk": 3,
+        "fields": {
+            "name": "Rock"
+        }
+    },
+    {
+        "model": "trackspot.genre",
+        "pk": 4,
+        "fields": {
+            "name": "Classic"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 1,
+        "fields": {
+            "name": "Aric Huang",
+            "bio": "Aric Huang",
+            "location": "Amherst"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 2,
+        "fields": {
+            "name": "DongWon Park",
+            "bio": "DongWon Park",
+            "location": "Amherst"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 3,
+        "fields": {
+            "name": "John Sweeny",
+            "bio": "John Sweeny",
+            "location": "Amherst"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 4,
+        "fields": {
+            "name": "Tommy Do",
+            "bio": "Tommy Do",
+            "location": "Amherst"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 5,
+        "fields": {
+            "name": "Dan MacDonald",
+            "bio": "Dan MacDonald",
+            "location": "Amherst"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 6,
+        "fields": {
+            "name": "Cameron Scigliano",
+            "bio": "Cameron Scigliano",
+            "location": "Amherst"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 7,
+        "fields": {
+            "name": "Simon Reynolds",
+            "bio": "Reynolds was born in London in 1963[3] and grew up in Berkhamsted.",
+            "location": "London"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 8,
+        "fields": {
+            "name": "STEVEN HYDEN",
+            "bio": "Steven Hyden is an American music critic. He currently hosts a podcast and joined UPROXX as a cultural critic in July 2016. Hyden previously worked at Grantland as a staff writer and at The A.V. Club as an editor.",
+            "location": "Appleton, WI"
+        }
+    },
+    {
+        "model": "trackspot.user",
+        "pk": 9,
+        "fields": {
+            "name": "Alexis Petridis",
+            "bio": "Alexis Petridis is a British journalist, head rock and pop critic for the UK newspaper The Guardian, as well as a regular contributor to the magazine GQ.",
+            "location": "Sunderland"
+        }
+    },
+    {
+        "model": "trackspot.critic",
+        "pk": 7,
+        "fields": {
+            "organization": "Rolling Stone"
+        }
+    },
+    {
+        "model": "trackspot.critic",
+        "pk": 8,
+        "fields": {
+            "organization": "Self-employed"
+        }
+    },
+    {
+        "model": "trackspot.critic",
+        "pk": 9,
+        "fields": {
+            "organization": "University of Cambridge"
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 7,
+        "fields": {
+            "name": "Kanye West",
+            "bio": "Kanye Omari West (/\u02c8k\u0251\u02d0nje\u026a/;[1] born June 8, 1977) is an American rapper, singer, songwriter, record producer, fashion designer, and entrepreneur."
+        }
+    },
+    {
+        "model": "trackspot.artist",
+        "pk": 8,
+        "fields": {
+            "name": "Flatbush Zombies",
+            "bio": "Flatbush Zombies is an American hip hop group from the Flatbush section of Brooklyn, New York City, formed in 2010. The group is composed of rappers Meechy Darko, Zombie Juice and Erick Arc Elliott, the latter of whom also serves as their regular record producer. The trio are part of the East Coast hip hop movement known as \"Beast Coast\", which also consists of fellow Brooklyn-based rap groups The Underachievers and Pro Era."
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 7,
+        "fields": {
+            "name": "The College Dropout",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg",
+            "release_date": "2004-02-10",
+            "artist": 7
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 8,
+        "fields": {
+            "name": "Late Registration",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f4/Late_registration_cd_cover.jpg",
+            "release_date": "2005-08-30",
+            "artist": 7
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 9,
+        "fields": {
+            "name": "Graduation",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg",
+            "release_date": "2007-09-11",
+            "artist": 7
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 10,
+        "fields": {
+            "name": "808s & Heartbreak",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f1/808s_%26_Heartbreak.png",
+            "release_date": "2008-11-24",
+            "artist": 7
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 11,
+        "fields": {
+            "name": "My Beautiful Dark Twisted Fantasy",
+            "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f0/My_Beautiful_Dark_Twisted_Fantasy.jpg",
+            "release_date": "2009-11-22",
+            "artist": 7
+        }
+    },
+    {
+        "model": "trackspot.album",
+        "pk": 12,
+        "fields": {
             "name": "Vacation in Hell",
-            "image_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F00a635e00775ac2b6f70e9ac9439e1d",
+            "image_url": "https://t2.genius.com/unsafe/300x0/https%3A%2F%2Fimages.genius.com%2F00a635e00775ac2b6f70e9ac9439e1d7.728x728x1.jpg",
             "release_date": "2018-04-22",
-            "artist": 2
+            "artist": 8
         }
     }
 ]
