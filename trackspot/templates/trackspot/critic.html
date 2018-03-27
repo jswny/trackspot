@@ -5,6 +5,7 @@
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/critic.css' %}">{% endblock %}
 
 {% block content %}
+
 <div class="row">
 <div class="col-sm-9">
   <div class="container-fluid">
@@ -13,7 +14,7 @@
 
       <div class="col-sm-4">
         <p>
-          <img src="images/empty_Person.jpg" style="width:250px;height:250px;"></img>
+          <img src="\static\images/empty_Person.jpg" style="width:250px;height:250px;"></img>
         </p>
         <div class="row">
           <h2>
@@ -37,7 +38,7 @@
           </div>
         </div>
         <div class="row align-items-end">
-          Average score: 3.2 &#9733;&#9733;&#9733;&#9734;&#9734;
+          Average score: 65 &#9733;&#9733;&#9733;&#9734;&#9734;
         </div>
       </div>
 
@@ -54,18 +55,19 @@
   </div>
 </div>
 
+
 <div class="col-sm-2">
   <p>
     <h4>
       Similar Critics
     </h4>
     <h5>
-      <img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 2
-      <img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 3
-      <img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 4
-      <img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 5
-      <img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 6
-      <img class="empty_Person" src="images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 7
+      <img class="empty_Person" src="\static\images/empty_Person.jpg" href="{{critic.get_absolute_url}}" style="width:75px; height:75px;"/> {{critic.name}}
+      <img class="empty_Person" src="\static\images/empty_Person.jpg." style="width:75px; height:75px;"> Critic 3
+      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 4
+      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 5
+      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 6
+      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 7
     </h5>
   </p>
 </div>
@@ -81,24 +83,24 @@
 
 <div class="row">
   <div class="col-sm-5">
-    <img src="images/klamar.jpg" alt="Kendrick" style="width:60px; height:60px;" align:left>
+    <img src="\static\images/klamar.jpg" alt="Kendrick" style="width:60px; height:60px;" align:left>
     <h5>
       Damn
     </h5>
     <h7>
-      4.1/5.0 &#9733;&#9733;&#9733;&#9733;&#9734;
+      91/100 &#9733;&#9733;&#9733;&#9733;&#9734;
     </h7>
     <p>
       This is a good rating.
     </p>
   </div>
   <div class="col-sm-4">
-    <img src="images/tswift.jpg" alt="Taylor Swift" style="width:60px;height:60px;" align:left>
+    <img src="\static\images/tswift.jpg" alt="Taylor Swift" style="width:60px;height:60px;" align:left>
     <h5>
       Reputation
     </h5>
     <h7>
-      1.2/5.0 &#9733;&#9734;&#9734;&#9734;&#9734;
+      24/100 &#9733;&#9734;&#9734;&#9734;&#9734;
     </h7>
     <p>
       This is a bad rating.
