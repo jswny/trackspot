@@ -55,10 +55,14 @@ def critic(request, **kwargs):
 def song(request, **kwargs):
     song_id = kwargs['pk']
     song = Song.objects.get(pk=song_id)
+    album_songs = Song.objects.filter(album__id = song.album.id)
+    # song_reviews = Song.objects.filter(review__id = song.review.id)
     return render(request, 
 	'trackspot/song.html',
 	context = {
-	'song':song
+	'song':song,
+    'album_songs':album_songs
+    # 'song_reviews':song_reviews
 	}
 	)
 

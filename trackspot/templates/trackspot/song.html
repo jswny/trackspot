@@ -16,12 +16,14 @@
           <h3>{{ song.name }}</h3>
 		
           <h5><a href="{{song.album.artist.get_absolute_url}}">{{song.album.artist}}</a></h5>
+		  
+		  <h6> {{song.genre}} </h6>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-7">
           <p>
-            <img src="../../static/images/Rockstar.jpg" height="350" width="400" id="Picture">
+            <img src={{song.album.image_url}} height="350" width="400" id="Picture">
           </p>
         </div>
         <div class="col-sm-5">
@@ -35,7 +37,7 @@
           <div class="col-sm-6">
             <p>
               <h3>
-                <span class="badge badge-success">Critic Score: 9.00</span>
+                <span class="badge badge-success">Critic Score: 90.00</span>
               </h3>
             </p>
             <table class="table">
@@ -47,26 +49,14 @@
                 </tr>
               </thead>
               <tbody>
+			 {% for critic_review in song_reviews}
                 <tr>
-                  <td>Forbes</td>
-                  <td>Good song and good beat.</td>
+                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user}}</a></td>
+                  <td>{{critic_review.description}}</td>
                   <td>
-                    8/10
-                  </td>
+                    {{critic_review.rating}}</td>
                 </tr>
-                <tr>
-                  <td>80 year old man</td>
-                  <td>This song is very ignorant. </td>
-                  <td>
-                    3/10
-                  </td>
-                </tr>
-                <td>Radio Person</td>
-                <td>This song is a one hit wonder and this artist will not last, but it is still a good piece of music.</td>
-                <td>
-                  7/10
-                </td>
-                </tr>
+			{% endfor %}
               </tbody>
             </table>
           </div>
@@ -74,7 +64,7 @@
           <div class="col-sm-6">
             <p>
               <h3>
-                <span class="badge badge-success">User Score: 8.00</span>
+                <span class="badge badge-success">User Score: 80.00</span>
               </h3>
             </p>
             <table class="table">
@@ -87,26 +77,14 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Hipster</td>
-                  <td>Yooooooo this song is awesommmeeeeeee.</td>
-                  <td>
-                    10/10
-                  </td>
-                </tr>
+                {% for user_review in song_reviews}
                 <tr>
-                  <td>Mother</td>
-                  <td>I would never want my kids listening to this song!</td>
+                  <td><a href="{{user_review.user.get_absolute_url}}">{{user_review.user}}</a></td>
+                  <td>{{user_review.description}}</td>
                   <td>
-                    2/10
-                  </td>
+                    {{user_review.rating}}</td>
                 </tr>
-                <tr>
-                  <td>Umass Student</td>
-                  <td>This is the first song I am going to play at a party. </td>
-                  <td>
-                    9/10
-                  </td>
-                </tr>
+			{% endfor %}
               </tbody>
             </table>
 
@@ -120,7 +98,7 @@
 
       <p id="AlbumLink">
         Link to Album is:
-        <a href="www.Beerbongs & Bentleys.com">Beerbongs & Bentleys</a>
+        <a href="{{song.album.get_absolute_url}}">{{song.album}}</a>
       </p>
       <table class="table table-hover table-condensed">
         <thead>
@@ -130,23 +108,16 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+		<tbody>
+		{% for album_song in album_songs %}
           <tr>
             <td>
-              <a href="www.Beerbongs & Bentleys.com">Money Made Me Do It</td>
+              <a href="{{album_song.get_absolute_url}}">{{album_song.name}}</a></td>
+			</td>
           </tr>
-          <tr>
-            <td>
-              <a href="www.Beerbongs & Bentleys.com">Congratulations</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="www.Beerbongs & Bentleys.com">Candy Paint</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="www.Beerbongs & Bentleys.com">Bank Account</td>
-          </tr>
+		{% endfor %}
+		</tbody>
+</table>		
     </div>
   </div>
 </div>
