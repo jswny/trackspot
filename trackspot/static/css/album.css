@@ -1,4 +1,33 @@
-.albums-album-art {
-	width:100px;
-	height:100px;
+.albums-the_album-name {
+}
+
+.albums-the_album-artist {
+	font-style: italic;
+}
+
+.albums-the_album-thumbnail {
+	width: 100%;
+	height: 30%;
+}
+
+.albums-the_album-description {
+	font-size: 14px;
+	font-style: italic;
+	color: #050505;
+
+	width: 100%; 
+  min-width:100%; 
+  max-width:100%; 
+
+  height:200px; 
+  min-height:110px;  
+  max-height:110px;
+  border:none;
+  overflow: hidden;
+  resize:none;
+}
+
+.score-overall {
+	font-style: italic;
+	font-weight: lighter;
 }
