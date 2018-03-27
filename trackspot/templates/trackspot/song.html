@@ -12,8 +12,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <h3> Rockstar </h3>
-          <h5>Post Malone</h5>
+		
+          <h3>{{ song.name }}</h3>
+		
+          <h5><a href="{{song.album.artist.get_absolute_url}}">{{song.album.artist}}</a></h5>
         </div>
       </div>
       <div class="row">
@@ -23,13 +25,8 @@
           </p>
         </div>
         <div class="col-sm-5">
-          <p id="Description"> Description: "Rockstar" is a song by American rapper Post Malone. It was released on September 15, 2017 by Republic
-            Records as the first single from his upcoming second studio album Beerbongs & Bentleys (2018). The track features
-            a guest verse from fellow American rapper 21 Savage. The track reached number one on the US Billboard Hot 100,
-            and reached the top spot in several other countries, including Australia, Canada, Portugal, Ireland, New Zealand,
-            Sweden, Norway, Finland, Denmark and the United Kingdom. It became both Post Malone and 21 Savage's first number-one
-            single in all the countries mentioned.
-          </p>
+          <p id="Description"> Description: {{song.description}} </p>
+          
         </div>
       </div>
 
