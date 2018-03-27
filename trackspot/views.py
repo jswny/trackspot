@@ -44,6 +44,16 @@ def album(request, **kwargs):
     album_id = kwargs['pk']
     return render(request, 'trackspot/album.html')
 
+def album_main(request, **kwargs):
+    albums = Album.objects.all()
+    return render(
+        request,
+        'trackspot/album_main.html',
+        context = {
+            'albums':albums
+        }
+    )
+
 def artist(request, **kwargs):
     artist_id = kwargs['pk']
     return render(request, 'trackspot/artist.html')
