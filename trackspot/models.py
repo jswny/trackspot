@@ -23,6 +23,7 @@ class Album(models.Model):
     image_url = models.CharField(help_text='Enter a URL for the album art for this album', max_length=500, null=True)
     release_date = models.DateField(null=True)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
+    description = models.TextField(help_text='Enter a description for this album', blank=True, max_length=1000)
     # genres -- connected via genre foreign keys
     # songs -- connected via song foreign keys
     # reviews -- connected via review foreign keys
@@ -62,7 +63,7 @@ class Genre(models.Model):
 
 class Review(models.Model):
     description = models.CharField(help_text='Enter a description for this song', max_length=500)
-    rating = models.PositiveIntegerField(validators=[MaxValueValidator(10)])
+    rating = models.PositiveIntegerField(validators=[MaxValueValidator(100)])
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     # allow nulls so that reviews for songs and albums can be differentiated
     album = models.ForeignKey('Album', on_delete=models.CASCADE, null=True)

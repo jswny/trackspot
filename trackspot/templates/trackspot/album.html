@@ -7,112 +7,140 @@
 {% block content %}
 <br>
 <div class="row">
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-8">
+  <!-- Left Half: Album information -->
+  <div class="col-sm-6">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <h4>Mellon Collie and the Infinite Sadness (1995)</h4>
-          <h6>Smashing Pumpkins</h6>
+          <h5 class="albums-the_album-name">{{the_album.name}}</h5>
+          <h6 class="albums-the_album-artist">{{the_album.artist}}</h6>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-7">
-          <p>
-            <img src="{% static 'images/smashing_pumpkins_melloncollie.jpg' %}" class="img-thumbnail" style="width:100%">
-          </p>
+        <div class="col-sm-6">
+          <p><img class="img-thumbnail albums-the_album-thumbnail" src="{{the_album.image_url}}"></p>
         </div>
-        <div class="col-sm-5">
-          <p>Mellon Collie and the Infinite Sadness is the third studio album by American alternative rock band The Smashing
-            Pumpkins, released on October 23, 1995 in the United Kingdom and a day later in the United States on Virgin Records.</p>
+        <div class="col-sm-6">
+          <h4><span class="badge badge-primary score-overall">Overall Score<br>95 / 100</span></h4>
         </div>
       </div>
       <div class="row">
-        <div class="row">
-          <div class="col-sm-6">
-            <p>
-              <h4>
-                <span class="badge badge-success">Critic Score : 97 / 100</span>
-              </h4>
-            </p>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="col-sm-1">Critic</th>
-                  <th class="col-sm-6">Review</th>
-                  <th class="col-sm-5">Score</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Danny Park</td>
-                  <td>A massive, sprawling and wildly uneven album</td>
-                  <td>
-                    8/10
-                  </td>
-                </tr>
-                <tr>
-                  <td>Joe Sweeny</td>
-                  <td>A beautiful masterpiece!</td>
-                  <td>
-                    10/10
-                  </td>
-                </tr>
-                <td>Daniel Macdonald</td>
-                <td>I love how it comes with basically two different moods. Dawn to dusk and twlight to moon light.</td>
+        <div class="col-sm-12">
+          <textarea class="albums-the_album-description">{{the_album.description}}</textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table-condensed">
+            <thead>
+              <tr>
+                <th>Song List</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if song_list %}
+                {% for song in song_list %}
+                  <tr>
+                    <td><a href="{{song.get_absolute_url}}">{{forloop.counter}}. {{song.name}}</a></td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Right Half: Review information -->
+  <div class="col-sm-6">
+    <div class="container-fluid">
+<!--       <div class="row">
+        <div class="col-sm-12">
+          <h4><span class="badge badge-primary">Overall Score : 95 / 100</span></h4>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-sm-12">
+          <h4><span class="badge badge-success">Critic Score : 97 / 100</span></h4>
+        </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-sm-1">Critic</th>
+                <th class="col-sm-6">Review</th>
+                <th class="col-sm-5">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Danny Park</td>
+                <td>A massive, sprawling and wildly uneven album</td>
                 <td>
                   8/10
                 </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-sm-6">
-            <p>
-              <h4>
-                <span class="badge badge-success">User Score : 87 / 100</span>
-              </h4>
-            </p>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="col-sm-1">User</th>
-                  <th class="col-sm-6">Review</th>
-                  <th class="col-sm-5">Score</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Aric Huang</td>
-                  <td>Definitely highly recommended.</td>
-                  <td>
-                    8/10
-                  </td>
-                </tr>
-                <tr>
-                  <td>Cameron Scigliano</td>
-                  <td>Mellon Collie is an amazing work of art! It has an unforgetable sound and vibe.</td>
-                  <td>
-                    10/10
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tommy Do</td>
-                  <td>The drums and bass are louder in the mix and great clarity in vocals and sound. </td>
-                  <td>
-                    6/10
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              </tr>
+              <tr>
+                <td>Joe Sweeny</td>
+                <td>A beautiful masterpiece!</td>
+                <td>
+                  10/10
+                </td>
+              </tr>
+              <td>Daniel Macdonald</td>
+              <td>I love how it comes with basically two different moods. Dawn to dusk and twlight to moon light.</td>
+              <td>
+                8/10
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-6">
+          <p>
+            <h4>
+              <span class="badge badge-success">User Score : 87 / 100</span>
+            </h4>
+          </p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-sm-1">User</th>
+                <th class="col-sm-6">Review</th>
+                <th class="col-sm-5">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aric Huang</td>
+                <td>Definitely highly recommended.</td>
+                <td>
+                  8/10
+                </td>
+              </tr>
+              <tr>
+                <td>Cameron Scigliano</td>
+                <td>Mellon Collie is an amazing work of art! It has an unforgetable sound and vibe.</td>
+                <td>
+                  10/10
+                </td>
+              </tr>
+              <tr>
+                <td>Tommy Do</td>
+                <td>The drums and bass are louder in the mix and great clarity in vocals and sound. </td>
+                <td>
+                  6/10
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-6">
     <div class="row">
       <table class="table">
         <thead>
