@@ -42,7 +42,26 @@ def index(request):
 
 def album(request, **kwargs):
     album_id = kwargs['pk']
-    return render(request, 'trackspot/album.html')
+    the_album = Album.objects.all()[album_id-1]
+    song_list = Song.objects.filter(album=album_id)
+    return render(
+        request,
+        'trackspot/album.html',
+        context = {
+            'the_album':the_album,
+            'song_list':song_list
+        }
+    )
+
+def album_main(request, **kwargs):
+    albums = Album.objects.all()
+    return render(
+        request,
+        'trackspot/album_main.html',
+        context = {
+            'albums':albums
+        }
+    )
 
 def artist(request, **kwargs):
     artist_id = kwargs['pk']
