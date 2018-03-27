@@ -13,14 +13,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <h4>Mellon Collie and the Infinite Sadness (1995)</h4>
-          <h6>Smashing Pumpkins</h6>
+          <h4>{{the_album.name}}</h4>
+          <h6>{{the_album.artist}}</h6>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-7">
           <p>
-            <img src="{% static 'images/smashing_pumpkins_melloncollie.jpg' %}" class="img-thumbnail" style="width:100%">
+            <img src="{{the_album.image_url}}" class="img-thumbnail" style="width:100%">
           </p>
         </div>
         <div class="col-sm-5">

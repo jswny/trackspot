@@ -7,6 +7,9 @@
 {% block content %}
 <div class="row">
 	<div class="col-sm-12">
+		<p>Albums</p>
+	</div>
+	<div class="col-sm-12">
 
 		{% if albums %}
 			{% for album in albums %}
@@ -14,5 +17,8 @@
 					<img class="albums-album-art" src="{{album.image_url}}" width=100px height=100px> {{album.name}}
 				</a></p>
 			{% endfor %}
+
+		{% else %}
+			<p>No Albums</p>
 		{% endif %}
 {% endblock %}

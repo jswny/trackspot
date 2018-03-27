@@ -23,6 +23,7 @@ class Album(models.Model):
     image_url = models.CharField(help_text='Enter a URL for the album art for this album', max_length=500, null=True)
     release_date = models.DateField(null=True)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
+    description = models.TextField(help_text='Enter a description for this album', blank=True, max_length=1000)
     # genres -- connected via genre foreign keys
     # songs -- connected via song foreign keys
     # reviews -- connected via review foreign keys

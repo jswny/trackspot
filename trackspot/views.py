@@ -42,7 +42,14 @@ def index(request):
 
 def album(request, **kwargs):
     album_id = kwargs['pk']
-    return render(request, 'trackspot/album.html')
+    the_album = Album.objects.all()[album_id-1]
+    return render(
+        request,
+        'trackspot/album.html',
+        context = {
+            'the_album':the_album
+        }
+    )
 
 def album_main(request, **kwargs):
     albums = Album.objects.all()
