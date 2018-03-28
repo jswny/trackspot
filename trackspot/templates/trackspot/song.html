@@ -6,107 +6,30 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-8">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-		
-          <h3>{{ song.name }}</h3>
-		
-          <h5><a href="{{song.album.artist.get_absolute_url}}">{{song.album.artist}}</a></h5>
-		  
+    <div class="col-sm-5">
+        <div class="container-fluid">
+	        <div class="row">
+                <div class="col-sm-12">
+          <h5>{{ song.name }}</h3>
+          <h6><a href="{{song.album.artist.get_absolute_url}}">{{song.album.artist}}</a></h5>
 		  <h6> {{song.genre}} </h6>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
           <p>
             <img src={{song.album.image_url}} height="250" width="300" id="Picture">
           </p>
         </div>
-        <div class="col-sm-5">
+		</div>
+		<div class="row">
+            <div class="col-sm-12">
           <p id="Description"> Description: {{song.description}} </p>
-          
+            </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="row">
-          <div class="col-sm-6">
-            <p>
-              <h3>
-            {% if song_reviews_critics %}
-                <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}}/{{review_user_rating_perfect}} </span>
-            {% else %} 
-			    <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}} </span>
-            {% endif %}
-              </h3>
-            </p>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="col-sm-1">Critic</th>
-                  <th class="col-sm-6">Review</th>
-                  <th class="col-sm-5">Score</th>
-                </tr>
-              </thead>
-              <tbody>
-			  {% if song_reviews_critics %}
-				{% for critic_review in song_reviews_critics %}
-                <tr>
-                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user.name}}</a></td>
-                  <td>{{critic_review.description}}</td>
-                  <td>{{critic_review.rating}}</td>
-                </tr>
-				{% endfor %}
-			{% endif %}
-              </tbody>
-            </table>
-          </div>
-
-          <div class="col-sm-6">
-            <p>
-              <h3>
-            {% if song_reviews_users %}
-                <span class="badge badge-success">User Score: {{review_user_rating_average_user}}/{{review_user_rating_perfect}}</span>
-            {% else %} 
-                <span class="badge badge-success">Critic Score: {{review_user_rating_average_user}} </span>
-            {% endif %}
-              </h3>
-            </p>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="col-sm-1">User</th>
-                  <th class="col-sm-6">Review</th>
-                  <th class="col-sm-5">Score</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-		    {% if song_reviews_users %}
-                {% for user_review in song_reviews_users %}
-                <tr>
-                  <td><a href="{{user_review.user.get_absolute_url}}">{{user_review.user}}</a></td>
-                  <td>{{user_review.description}}</td>
-                  <td>
-                    {{user_review.rating}}</td>
-				{% endfor %}
-                </tr>
-			{% endif %}
-              </tbody>
-            </table>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="row">
-
+		<div class="row">
+	        <div class="col-sm-12">
+    
       <p id="AlbumLink">
         Link to Album is:
         <a href="{{song.album.get_absolute_url}}">{{song.album}}</a>
@@ -115,7 +38,7 @@
         <thead>
           <tr>
             <th>
-              Related Songs:
+              Other Songs in the Album:
             </th>
           </tr>
         </thead>
@@ -131,5 +54,95 @@
 </table>		
     </div>
   </div>
+  </div>
+  </div>
+  
+  <!-- right half -->
+    <div class="col-sm-7">
+        <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+		  </div>
+		</div>
+        <div class="row">
+            <div class="col-sm-12">
+            <p>
+              <h3>
+            {% if song_reviews_critics %}
+                <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}}/{{review_user_rating_perfect}} </span>
+            {% else %} 
+			    <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}} </span>
+            {% endif %}
+              </h3>
+            </p>
+			</div>
+        </div>
+		<div class="row">
+            <div class="col-sm-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sm-1">Review</th>
+                  <th class="col-sm-6">Critic</th>
+                  <th class="col-sm-5">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% if song_reviews_critics %}
+				{% for critic_review in song_reviews_critics %}
+                <tr>
+				<td>{{critic_review.description}}</td>
+                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user.name}}</a></td>
+                  
+                  <td>{{critic_review.rating}}</td>
+                </tr>
+				{% endfor %}
+			{% endif %}
+              </tbody>
+            </table>
+            </div>
+		</div>
+
+        <div class="row">
+            <div class="col-sm-12">
+            <p>
+              <h3>
+            {% if song_reviews_users %}
+                <span class="badge badge-success">User Score: {{review_user_rating_average_user}}/{{review_user_rating_perfect}}</span>
+            {% else %} 
+                <span class="badge badge-success">Critic Score: {{review_user_rating_average_user}} </span>
+            {% endif %}
+              </h3>
+            </p>
+			</div>
+		</div>
+		<div class="row">
+            <div class="col-sm-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sm-1">Review</th>
+                  <th class="col-sm-6">User</th>
+                  <th class="col-sm-5">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+		    {% if song_reviews_users %}
+                {% for user_review in song_reviews_users %}
+                <tr>
+				<td>{{user_review.description}}</td>
+                  <td><a href="{{user_review.user.get_absolute_url}}">{{user_review.user}}</a></td>
+                  
+                  <td>
+                    {{user_review.rating}}</td>
+				{% endfor %}
+                </tr>
+			{% endif %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}

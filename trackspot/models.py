@@ -40,7 +40,7 @@ class Album(models.Model):
 class Song(models.Model):
     album = models.ForeignKey('Album', on_delete=models.CASCADE)
     name = models.CharField(help_text='Enter a name for this song', max_length=100)
-    description = models.CharField(help_text='Enter a description for this song', blank=True, max_length=500)
+    description = models.CharField(help_text='Enter a description for this song', blank=True, max_length=2000)
     genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True)
     # reviews -- connected via review foreign keys
 
