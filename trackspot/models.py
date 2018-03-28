@@ -7,6 +7,7 @@ from django.urls import reverse
 class Artist(models.Model):
     name = models.CharField(help_text='Enter a name for this artist', max_length=100)
     bio = models.CharField(help_text='Enter a description fot this artist', blank=True, max_length=500)
+    artist_pic = models.CharField(help_text='Enter a URL for the artist picture', max_length=500, null=True)
     # albums -- connected via album foreign keys
 
     def __str__(self):
@@ -40,7 +41,7 @@ class Album(models.Model):
 class Song(models.Model):
     album = models.ForeignKey('Album', on_delete=models.CASCADE)
     name = models.CharField(help_text='Enter a name for this song', max_length=100)
-    description = models.CharField(help_text='Enter a description for this song', blank=True, max_length=500)
+    description = models.CharField(help_text='Enter a description for this song', blank=True, max_length=2000)
     genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True)
     # reviews -- connected via review foreign keys
 
@@ -90,6 +91,7 @@ class User(models.Model):
     # reviews -- connected via review foreign keys
     bio = models.CharField(help_text='Enter a bio for this user', max_length=500)
     location = models.CharField(help_text='Enter a location for this user', max_length=50)
+    profile_pic = models.CharField(help_text='Enter a URL for the profile pic for this user', max_length=500, null=True)
     
     def __str__(self):
         return self.name
