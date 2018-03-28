@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Count
 from django.db.models import Sum
-from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
@@ -48,6 +47,7 @@ def album(request, **kwargs):
     the_album = Album.objects.all()[album_id-1]
     song_list = Song.objects.filter(album=album_id)
 
+    # Critic Review
     review_critic = Review.objects.filter(album=album_id).exclude(user__critic=None)
     review_critic_count = Review.objects.filter(album=album_id).exclude(user__critic=None).count()
     review_critic_rating_perfect = 100    
@@ -57,6 +57,7 @@ def album(request, **kwargs):
     else:
         review_critic_rating_average = float("{0:.1f}".format(review_critic_rating_total / review_critic_count))
 
+    # User Review
     review_user = Review.objects.filter(album=album_id).filter(user__critic=None)
     review_user_count = Review.objects.filter(album=album_id).filter(user__critic=None).count()
     review_user_rating_perfect = 100    
@@ -66,6 +67,7 @@ def album(request, **kwargs):
     else:
         review_user_rating_average = float("{0:.1f}".format(review_user_rating_total / review_user_count))
 
+    # Overall Score
     if review_critic_count == 0 and review_user_count == 0:
         review_rating_overall = 0
     elif review_critic_count == 0 and review_user_count != 0:
