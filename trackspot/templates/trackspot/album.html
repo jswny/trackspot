@@ -8,30 +8,34 @@
 <br>
 <div class="row">
   <!-- Left Half: Album information -->
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <div class="container-fluid">
+      <!-- Album Name / Artist Name -->
       <div class="row">
         <div class="col-sm-12">
           <h5 class="albums-the_album-name">{{the_album.name}}</h5>
           <h6 class="albums-the_album-artist">{{the_album.artist}}</h6>
         </div>
       </div>
+      <!-- Album Image / Overall Score -->
       <div class="row">
         <div class="col-sm-6">
           <p><img class="img-thumbnail albums-the_album-thumbnail" src="{{the_album.image_url}}"></p>
         </div>
         <div class="col-sm-6">
-          <h4><span class="badge badge-primary score-overall">Overall Score<br>95 / 100</span></h4>
+          <h4><span class="badge badge-primary score-overall">Overall Score<br>{{review_user_rating_average}} / {{review_user_rating_perfect}}</span></h4>
         </div>
       </div>
+      <!-- Album Description -->
       <div class="row">
         <div class="col-sm-12">
           <textarea class="albums-the_album-description">{{the_album.description}}</textarea>
         </div>
       </div>
+      <!-- Song List in the album -->
       <div class="row">
         <div class="col-sm-12">
-          <table class="table-condensed">
+          <table class="table table-hover table-condensed albums-the_album-song-list">
             <thead>
               <tr>
                 <th>Song List</th>
@@ -53,26 +57,50 @@
   </div>
   
   <!-- Right Half: Review information -->
-  <div class="col-sm-6">
+  <div class="col-sm-7">
     <div class="container-fluid">
-<!--       <div class="row">
-        <div class="col-sm-12">
-          <h4><span class="badge badge-primary">Overall Score : 95 / 100</span></h4>
-        </div>
-      </div> -->
       <div class="row">
         <div class="col-sm-12">
-          <h4><span class="badge badge-success">Critic Score : 97 / 100</span></h4>
+
         </div>
-          <table class="table">
+      </div>
+      <!-- Critic Score -->
+      <div class="row">
+        <div class="col-sm-12">
+          <h4><span class="badge badge-success">User Score : {{review_user_rating_average}} / {{review_user_rating_perfect}} </span></h4>
+        </div>
+      </div>
+      <!-- Review Table -->
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-hover table-condensed albums-the_album-review">
             <thead>
               <tr>
-                <th class="col-sm-1">Critic</th>
-                <th class="col-sm-6">Review</th>
-                <th class="col-sm-5">Score</th>
+                <th class="col-sm-12">Critic</th>
+                <th class="col-sm-3">Review</th>
+                <th class="col-sm-3">Score</th>
               </tr>
             </thead>
             <tbody>
+              {% if review_user %}
+                {% for review in review_user %}
+                  <tr>
+                    <td>{{review.description}}</td>
+                    <td>{{review.user}}</td>
+                    <td>{{review.rating}}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!--
+
               <tr>
                 <td>Danny Park</td>
                 <td>A massive, sprawling and wildly uneven album</td>
@@ -257,4 +285,4 @@
     </div>
   </div>
 </div>
-{% endblock %}
+-->
