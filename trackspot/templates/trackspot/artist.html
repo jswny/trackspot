@@ -5,11 +5,12 @@
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/artist.css' %}">{% endblock %}
 
 {% block content %}
+
 <div class="row">
   <div class="col-sm-5">
 
     <div class="main-section">
-      <h2 class="header">Young Thug</h2>
+      <h2 class="header">{{artist.name}}</h2>
       <img class="artist-image" src="images/young thug.jpg">
     </div>
 
@@ -27,11 +28,12 @@
         </div>
       </div>
       <div class="row album-entry">
+        {% for album in albums %}
         <div class="col-2">
-          <img class="album-entry-image" src="images/slimey.jpg">
+          <img class="album-entry-image" src="{{album.image_url}}">
         </div>
         <div class="col-4">
-          <p class="album-entry-name">Super Slimey</p>
+          <p class="album-entry-name">{{album.name}}</p>
         </div>
         <div class="col-3">
           <p class="album-entry-critic-score">63/100</p>
@@ -39,8 +41,10 @@
         <div class="col-3">
           <p class="album-entry-user-score">68/100</p>
         </div>
+        {%endfor%}
       </div>
-
+      
+      <!--
       <div class="row album-entry">
         <div class="col-2">
           <img class="album-entry-image" src="images/thugger.jpg">
@@ -100,17 +104,14 @@
           <p class="album-entry-user-score">73/100</p>
         </div>
       </div>
+    -->
 
     </div>
   </div>
   <div class="col-sm-4">
     <div class="bio-section">
       <h2 class="header">Bio</h2>
-      <p class="bio">Jeffery Williams, also known as Young Thug, is an American rapper, singer, songwriter, and producer. He has collaborated
-        with many veteran rappers and achieved mainstream recognition around 2014 with several singles including "Stoner"
-        and "Danny Glover". In 2015, he released several installments to his Slime Season series which were followed up by
-        mixtapes Slime Season 3, I'm Up, and Jeffery in 2016. Thugger's career reached an all time high and later in 2017
-        he released another mixtape titled Beautiful Thugger Girls.</p>
+      <p class="bio">{{artist.bio}}</p>
     </div>
     <div class="top-songs-section">
       <h2 class="header">Top Songs</h2>
