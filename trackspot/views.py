@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Count
 from django.db.models import Sum
-from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
@@ -48,11 +47,40 @@ def album(request, **kwargs):
     the_album = Album.objects.all()[album_id-1]
     song_list = Song.objects.filter(album=album_id)
 
-    review_user = Review.objects.filter(album=album_id)
-    review_user_count = Review.objects.filter(album=album_id).count()
+    # Critic Review
+    review_critic = Review.objects.filter(album=album_id).exclude(user__critic=None)
+    review_critic_count = Review.objects.filter(album=album_id).exclude(user__critic=None).count()
+    review_critic_rating_perfect = 100    
+    review_critic_rating_total = Review.objects.filter(album=album_id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+    if review_critic_count == 0:
+        review_critic_rating_average = 0
+    else:
+        review_critic_rating_average = float("{0:.1f}".format(review_critic_rating_total / review_critic_count))
+
+    # User Review
+    review_user = Review.objects.filter(album=album_id).filter(user__critic=None)
+    review_user_count = Review.objects.filter(album=album_id).filter(user__critic=None).count()
     review_user_rating_perfect = 100    
-    review_user_rating_total = Review.objects.filter(album=album_id).aggregate(Sum('rating'))['rating__sum']
-    review_user_rating_average = review_user_rating_total / review_user_count
+    review_user_rating_total = Review.objects.filter(album=album_id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+    if review_user_count == 0:
+        review_user_rating_average = 0
+    else:
+        review_user_rating_average = float("{0:.1f}".format(review_user_rating_total / review_user_count))
+
+    # Overall Score
+    if review_critic_count == 0 and review_user_count == 0:
+        review_rating_overall = 0
+    elif review_critic_count == 0 and review_user_count != 0:
+        review_rating_overall = float("{0:.1f}".format((review_user_rating_total) / (review_user_count)))
+    elif review_critic_count != 0 and review_user_count == 0:
+        review_rating_overall = float("{0:.1f}".format((review_critic_rating_total) / (review_critic_count)))
+    else:
+        review_rating_overall = float("{0:.1f}".format((review_critic_rating_total + review_user_rating_total) / (review_critic_count + review_user_count)))
+
+    # Variable used in django template
+    list = []
+    for i in range(0,100):
+        list.append(i)
 
     return render(
         request,
@@ -60,11 +88,18 @@ def album(request, **kwargs):
         context = {
             'the_album':the_album,
             'song_list':song_list,
+            'review_critic':review_critic,
+            'review_critic_count':review_critic_count,
+            'review_critic_rating_perfect':review_critic_rating_perfect,
+            'review_critic_rating_total':review_critic_rating_total,
+            'review_critic_rating_average':review_critic_rating_average,
             'review_user':review_user,
             'review_user_count':review_user_count,
             'review_user_rating_perfect':review_user_rating_perfect,
             'review_user_rating_total':review_user_rating_total,
-            'review_user_rating_average':review_user_rating_average
+            'review_user_rating_average':review_user_rating_average,
+            'review_rating_overall':review_rating_overall,
+            'list':list
         }
     )
 
