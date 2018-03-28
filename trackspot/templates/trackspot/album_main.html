@@ -11,6 +11,10 @@
 	</div>
 	<div class="col-sm-12">
 
+		{% for i in list %}
+			<p>{{i}}</p>
+		{% endfor %}
+
 		{% if albums %}
 			{% for album in albums %}
 				<table class="img-thumbnail">

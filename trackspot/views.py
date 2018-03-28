@@ -77,6 +77,11 @@ def album(request, **kwargs):
     else:
         review_rating_overall = float("{0:.1f}".format((review_critic_rating_total + review_user_rating_total) / (review_critic_count + review_user_count)))
 
+    # Variable used in django template
+    list = []
+    for i in range(0,100):
+        list.append(i)
+
     return render(
         request,
         'trackspot/album.html',
@@ -93,7 +98,8 @@ def album(request, **kwargs):
             'review_user_rating_perfect':review_user_rating_perfect,
             'review_user_rating_total':review_user_rating_total,
             'review_user_rating_average':review_user_rating_average,
-            'review_rating_overall':review_rating_overall
+            'review_rating_overall':review_rating_overall,
+            'list':list
         }
     )
 
