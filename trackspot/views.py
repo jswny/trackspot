@@ -6,12 +6,6 @@ from django.db.models import Count
 from .models import *
 import datetime
 
-def get_user_reviews():
-    """
-    Gets all user reviews so far posted by user.
-    """
-    return Review.objects
-
 def get_current_album_releases():
     """
     Gets all of the albums which have release dates less than today,
@@ -75,13 +69,13 @@ def artist(request, **kwargs):
 
 def critic(request, **kwargs):
     critic_id = kwargs['pk']
-    recent_reviews = get_user_reviews().order_by('rating')
-
-    return render(request, 'trackspot/critic.html',
+    critics = Critic.objects.all()
+    return render(request, 'trackspot/critic.html', 
         context = {
-            'reviews':recent_reviews
+        'critics':critics
         }
         )
+
 
 def song(request, **kwargs):
     song_id = kwargs['pk']

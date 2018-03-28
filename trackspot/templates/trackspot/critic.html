@@ -18,7 +18,7 @@
         </p>
         <div class="row">
           <h2>
-            Organization: Metacritic
+            Organization: Rolling Stones
           </h2>
         </div>
         <div class="row">
@@ -56,20 +56,23 @@
 </div>
 
 
-<div class="col-sm-2">
+<div class="col-sm-3">
   <p>
     <h4>
       Similar Critics
-    </h4>
-    <h5>
-      <img class="empty_Person" src="\static\images/empty_Person.jpg" href="{{critic.get_absolute_url}}" style="width:75px; height:75px;"/> {{critic.name}}
-      <img class="empty_Person" src="\static\images/empty_Person.jpg." style="width:75px; height:75px;"> Critic 3
-      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 4
-      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 5
-      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 6
-      <img class="empty_Person" src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> Critic 7
-    </h5>
+      </h4>
+      {% if critics %}
+      {% for critic in critics %}
+
+    <h6>{{forloop.counter}}
+      <a class="empty_Person" href="{{user.name.get_absolute_url}}"> 
+      	<img src="\static\images/empty_Person.jpg" style="width:75px; height:75px;"> {{critic.name}}
+      </a>
+    </h6>
+    {% endfor %}
+    {% endif %}
   </p>
+
 </div>
 </div>
 
@@ -84,8 +87,9 @@
 <div class="row">
   <div class="col-sm-5">
     <img src="\static\images/klamar.jpg" alt="Kendrick" style="width:60px; height:60px;" align:left>
-    <h5>
-      Damn
+    <h5><a href = {{song.get_absolute_url}}>
+      {{song.name}}
+  	</a>
     </h5>
     <h7>
       91/100 &#9733;&#9733;&#9733;&#9733;&#9734;
