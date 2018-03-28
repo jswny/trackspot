@@ -76,18 +76,20 @@
           <table class="table table-hover table-condensed albums-the_album-review">
             <thead>
               <tr>
-                <th class="col-sm-12">Critic</th>
-                <th class="col-sm-3">Review</th>
-                <th class="col-sm-3">Score</th>
+                <th >Review</th>
+                <th >Song</th>
+                <th >Review</th>
+                <th >Score</th>
               </tr>
             </thead>
             <tbody>
               {% if review_user %}
                 {% for review in review_user %}
                   <tr>
-                    <td>{{review.description}}</td>
-                    <td>{{review.user}}</td>
-                    <td>{{review.rating}}</td>
+                    <td class="col-sm-1">{{review.description}}</td>
+                    <td class="col-sm-1">{{review.song}}</td>
+                    <td class="col-sm-8">{{review.user}}</td>
+                    <td class="col-sm-1">{{review.rating}}</td>
                   </tr>
                 {% endfor %}
               {% endif %}
