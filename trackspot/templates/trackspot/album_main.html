@@ -11,12 +11,11 @@
 	</div>
 	<div class="col-sm-12">
 
-		{% for i in list %}
-			<p>{{i}}</p>
-		{% endfor %}
-
 		{% if albums %}
 			{% for album in albums %}
+				{% if forloop.counter|divisibleby:4 %}
+					HAHA
+				{% endif %}
 				<table class="img-thumbnail">
 					<th>
 					</th>
