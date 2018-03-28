@@ -84,7 +84,13 @@ def artist(request, **kwargs):
 
 def critic(request, **kwargs):
     critic_id = kwargs['pk']
-    return render(request, 'trackspot/critic.html')
+    critics = Critic.objects.all()
+    return render(request, 'trackspot/critic.html', 
+        context = {
+        'critics':critics
+        }
+        )
+
 
 def song(request, **kwargs):
     song_id = kwargs['pk']

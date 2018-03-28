@@ -66,8 +66,8 @@ class Review(models.Model):
     rating = models.PositiveIntegerField(validators=[MaxValueValidator(100)])
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     # allow nulls so that reviews for songs and albums can be differentiated
-    album = models.ForeignKey('Album', on_delete=models.CASCADE, null=True)
-    song = models.ForeignKey('Song', on_delete=models.CASCADE, null=True)
+    album = models.ForeignKey('Album', on_delete=models.CASCADE, null=True, blank=True)
+    song = models.ForeignKey('Song', on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return self.description
