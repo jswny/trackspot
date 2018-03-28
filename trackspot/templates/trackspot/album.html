@@ -23,7 +23,7 @@
           <p><img class="img-thumbnail albums-the_album-thumbnail" src="{{the_album.image_url}}"></p>
         </div>
         <div class="col-sm-6">
-          <h4><span class="badge badge-primary score-overall">
+          <h4><span class="badge badge-pill badge-primary score-overall">
             {% if review_critic or review_user %}
             Overall Score<br>
               {{review_rating_overall}} / {{review_user_rating_perfect}}</span></h4>
@@ -75,7 +75,7 @@
       {% if review_critic %}
       <div class="row">
         <div class="col-sm-12">
-          <h4><span class="badge badge-success">Critic Score : {{review_critic_rating_average}} / {{review_critic_rating_perfect}} </span></h4>
+          <h4><span class="badge badge-pill badge-danger">Critic Score : {{review_critic_rating_average}} / {{review_critic_rating_perfect}} </span></h4>
         </div>
       </div>
       <!-- Review Table -->
@@ -109,7 +109,7 @@
       {% if review_user %}
       <div class="row">
         <div class="col-sm-12">
-          <h4><span class="badge badge-success">User Score : {{review_user_rating_average}} / {{review_user_rating_perfect}} </span></h4>
+          <h4><span class="badge badge-pill badge-success">User Score : {{review_user_rating_average}} / {{review_user_rating_perfect}} </span></h4>
         </div>
       </div>
       <!-- Review Table -->
