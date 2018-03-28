@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Count
+from django.views import generic
 
 # Create your views here.
 
@@ -75,6 +76,7 @@ def song(request, **kwargs):
     song_id = kwargs['pk']
     return render(request, 'trackspot/song.html')
 
-def user(request, **kwargs):
-    user_id = kwargs['pk']
-    return render(request, 'trackspot/user.html')
+class UserDetailView(generic.DetailView):
+    # user_id = kwargs['pk']
+    model = User
+    template_name='trackspot/user.html'
