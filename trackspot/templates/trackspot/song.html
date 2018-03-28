@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-sm-7">
           <p>
-            <img src={{song.album.image_url}} height="350" width="400" id="Picture">
+            <img src={{song.album.image_url}} height="250" width="300" id="Picture">
           </p>
         </div>
         <div class="col-sm-5">
@@ -37,7 +37,11 @@
           <div class="col-sm-6">
             <p>
               <h3>
-                <span class="badge badge-success">Critic Score: 90.00</span>
+            {% if song_reviews_critics %}
+                <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}}/{{review_user_rating_perfect}} </span>
+            {% else %} 
+			    <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}} </span>
+            {% endif %}
               </h3>
             </p>
             <table class="table">
@@ -49,14 +53,15 @@
                 </tr>
               </thead>
               <tbody>
-			 {% for critic_review in song_reviews %}
+			  {% if song_reviews_critics %}
+				{% for critic_review in song_reviews_critics %}
                 <tr>
-                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user}}</a></td>
+                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user.name}}</a></td>
                   <td>{{critic_review.description}}</td>
-                  <td>
-                    {{critic_review.rating}}</td>
+                  <td>{{critic_review.rating}}</td>
                 </tr>
-			{% endfor %}
+				{% endfor %}
+			{% endif %}
               </tbody>
             </table>
           </div>
@@ -64,7 +69,11 @@
           <div class="col-sm-6">
             <p>
               <h3>
-                <span class="badge badge-success">User Score: 80.00</span>
+            {% if song_reviews_users %}
+                <span class="badge badge-success">User Score: {{review_user_rating_average_user}}/{{review_user_rating_perfect}}</span>
+            {% else %} 
+                <span class="badge badge-success">Critic Score: {{review_user_rating_average_user}} </span>
+            {% endif %}
               </h3>
             </p>
             <table class="table">
@@ -77,14 +86,16 @@
               </thead>
               <tbody>
                 <tr>
-                {% for user_review in song_reviews %}
+		    {% if song_reviews_users %}
+                {% for user_review in song_reviews_users %}
                 <tr>
                   <td><a href="{{user_review.user.get_absolute_url}}">{{user_review.user}}</a></td>
                   <td>{{user_review.description}}</td>
                   <td>
                     {{user_review.rating}}</td>
+				{% endfor %}
                 </tr>
-			{% endfor %}
+			{% endif %}
               </tbody>
             </table>
 
