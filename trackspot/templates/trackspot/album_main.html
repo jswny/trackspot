@@ -13,8 +13,17 @@
 
 		{% if albums %}
 			{% for album in albums %}
-				<p><a href="{{album.get_absolute_url}}">
-					<img class="albums-album-art" src="{{album.image_url}}" width=100px height=100px> {{album.name}}
+				{% if forloop.counter|divisibleby:4 %}
+					HAHA
+				{% endif %}
+				<table class="img-thumbnail">
+					<th>
+					</th>
+					<tbody>
+						<a href="{{album.get_absolute_url}}">
+						<img class="img-thumbnail d-block albums-album-art" src="{{album.image_url}}" width=100px height=100px> {{album.name}}
+					</tbody>
+				</table>
 				</a></p>
 			{% endfor %}
 
