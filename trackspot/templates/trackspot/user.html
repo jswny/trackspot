@@ -22,7 +22,7 @@
       <img id="pic" src=https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png>
     </div>
     <div class="col-lg-8 textbox" style="width:200px; height:200px">
-      <p>Name:{{user.name}}</p>
+      <p>Name: {{user.name}}</p>
       <p>Location: {{user.location}}</p>
       <p>Number of Reviews: {{user.review_set.all.count}}</p>
     </div>
@@ -45,8 +45,14 @@
     </div>
     {% for review in user.sorted_reviews %}
     <div class="row">
-      <div class="col-lg-4"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
-      <div class="col-lg-4"></div>
+      {% if review.album %}
+        <div class="col-lg-4"><a href="{{review.album.get_absolute_url}}">{{review.album}}</a></div>
+        <div class="col-lg-4"><a href="{{review.album.artist.get_absolute_url}}">{{review.album.artist}}</a></div>
+      {% else %}
+        <div class="col-lg-4"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
+        <div class="col-lg-4"><a href="{{review.song.album.artist.get_absolute_url}}">{{review.song.album.artist}}</a></div>
+      {% endif %}
+      
       <div id="play-icon" class="col-lg-4">
         <i class="far fa-play-circle"></i>
       </div>
