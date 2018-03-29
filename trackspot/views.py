@@ -181,10 +181,24 @@ def artist(request, **kwargs):
 
 def critic(request, **kwargs):
     critic_id = kwargs['pk']
-    critics = Critic.objects.all()
+    curr_critic = Critic.objects.get(pk=critic_id)
+    critics = Critic.objects.exclude(id=critic_id)
+    song_reviews = Review.objects.filter(user__id=critic_id)
+    critic_id1 = critic_id
+    total_rating = Review.objects.filter(user__id=critic_id1).aggregate(Sum('rating'))['rating__sum']
+    review_count = Review.objects.filter(user__id=critic_id1).count()
+    if review_count == 0:
+     average_rating = 0
+    else:
+        average_rating = float("{0:.1f}".format(total_rating / review_count))
     return render(request, 'trackspot/critic.html', 
         context = {
-        'critics':critics
+        'critics':critics,
+        'song_reviews':song_reviews,
+        'curr_critic':curr_critic,
+        'review_count':review_count,
+        'total_rating':total_rating,
+        'average_rating':average_rating
         }
         )
 
