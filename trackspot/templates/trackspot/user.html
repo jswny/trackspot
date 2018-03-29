@@ -10,7 +10,7 @@
     <h1>Profile</h1>
   </div>
   <div class="col-lg-6">
-    <h1 id="favorite">Favorite Songs</h1>
+    <h1 id="favorite">Highest-Rated Songs</h1>
   </div>
 </div>
 
@@ -74,9 +74,9 @@
 {% for review in user.review_set.all %}
 <div class="row">
   {% if review.album %}
-    <div class="col-lg-2"><a href="{{review.song.get_absolute_url}}">{{review.album}}</a></div>
+    <div class="col-lg-2"><a href="{{review.album.get_absolute_url}}">{{review.album}}</a></div>
   {% else %}
-    <div class="col-lg-2">{{review.song}}</div>
+    <div class="col-lg-2"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
   {% endif %}
   <div class="col-lg-8">{{review.description}}</div>
   <div class="col-lg-2">{{review.rating}}</div>
