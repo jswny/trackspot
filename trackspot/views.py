@@ -26,7 +26,6 @@ def get_future_album_releases():
     today = datetime.date.today()
     return Album.objects.filter(release_date__gt=today)
 
-# TODO: link items via URLs
 def index(request):
     today = datetime.date.today()
     new_releases = get_current_album_releases().order_by('release_date')[:5]

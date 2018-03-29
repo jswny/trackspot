@@ -25,7 +25,7 @@ class Album(models.Model):
     release_date = models.DateField(null=True)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
     description = models.TextField(help_text='Enter a description for this album', blank=True, max_length=1000)
-    # genres -- connected via genre foreign keys
+    genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True)
     # songs -- connected via song foreign keys
     # reviews -- connected via review foreign keys
 
