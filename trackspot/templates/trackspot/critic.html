@@ -9,39 +9,39 @@
 <div class="row">
 <div class="col-sm-9">
   <div class="container-fluid">
-
     <div class="row">
-
       <div class="col-sm-4">
         <p>
-          <img src="\static\images/empty_Person.jpg" style="width:250px;height:250px;"></img>
+         {% if curr_critic.profile_pic != null %}
+        <img src="{{critic.profile_pic}}" width:250px height:250px>
+        {% else %}
+        <img src = "\static\images/empty_Person.jpg" style="width:250px; height:250px">
+        {% endif %}
         </p>
         <div class="row">
-          <h2>
-            Organization: Rolling Stones
-          </h2>
+          <a> Organization: {{curr_critic.organization}}
+			</a>
         </div>
         <div class="row">
           <h5>
-            Ratings Given This Month: 14
+            Ratings Given This Month: {{review_count}}
           </h5>
         </div>
       </div>
 
       <div class="col-sm-3">
         <h1>
-          Critic 1
+        	{{curr_critic.name}}
         </h1>
         <div class="row">
           <div class="span8">
-            I am an authorized critic here and this is my bio.
+            {{curr_critic.bio}}
           </div>
         </div>
         <div class="row align-items-end">
-          Average score: 65 &#9733;&#9733;&#9733;&#9734;&#9734;
+          Average score: {{average_rating}} /100
         </div>
       </div>
-
       <div class="col-sm-1">
         <p>
           <h5>
@@ -66,8 +66,13 @@
 
     <h6>{{forloop.counter}}
       <a class="empty_Person" href="{{critic.get_absolute_url}}"> 
-      	<img src="{{critic.image_url}}" width:75px height:75px> 
+      	{% if critic.profile_pic != null %}
+      	<img src="{{critic.profile_pic}}" width:75px height:75px>
+      	{% else %}
+      	<img src = "\static\images/empty_Person.jpg" style="width:75px; height:75px">
+      	{% endif %}
       	{{critic.name}}
+
       </a>
     </h6>
     {% endfor %}
@@ -88,14 +93,14 @@
 	{% if song_reviews %}
       {% for review in song_reviews %}
   <div class="col-sm-5">
-    <img src="{{review.song.image_url}}" style="width:60px; height:60px;" align:left>
+    <img src="{{review.song.album.image_url}}" style="width:60px; height:60px;" align:left>
     <h5><a href = {{review.song.get_absolute_url}}>
       {{review.song.name}}
   	</a>
     </h5>
     <h7>
-      {{review.rating}} &#9733;&#9733;&#9733;&#9733;&#9734;
-    </h7>
+      {{review.rating}}/100
+          </h7>
     <p>
       {{review.description}}
     </p>
