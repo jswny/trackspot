@@ -13,14 +13,14 @@
       <div class="col-sm-4">
         <p>
          {% if curr_critic.profile_pic != null %}
-        <img src="{{critic.profile_pic}}" width:250px height:250px>
+        <img src="{{curr_critic.profile_pic}}" width:250px height:250px>
         {% else %}
         <img src = "\static\images/empty_Person.jpg" style="width:250px; height:250px">
         {% endif %}
         </p>
         <div class="row">
-          <a> Organization: {{curr_critic.organization}}
-			</a>
+          <h6> Organization: {{curr_critic.organization}}
+			</h6>
         </div>
         <div class="row">
           <h5>

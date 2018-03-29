@@ -120,7 +120,7 @@ def artist(request, **kwargs):
 
 def critic(request, **kwargs):
     critic_id = kwargs['pk']
-    curr_critic = User.objects.filter(pk=critic_id)
+    curr_critic = Critic.objects.get(pk=critic_id)
     critics = Critic.objects.exclude(id=critic_id)
     song_reviews = Review.objects.filter(user__id=critic_id)
     critic_id1 = critic_id
