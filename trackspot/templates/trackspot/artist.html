@@ -11,7 +11,12 @@
 
     <div class="main-section">
       <h2 class="header">{{artist.name}}</h2>
-      <img class="artist-image" src="{{artist.artist_pic}}">
+      {% if artist.profile_pic != null %}
+        <img class="artist-image" src="{{artist.artist_pic}}">
+      {% else %}
+        <img src = "/static/images/empty_Person.jpg" style="width:250px; height:250px">
+      {% endif %}
+      
     </div>
 
     <div class="main-section">
@@ -191,7 +196,11 @@
       {% for album in albums_same_genre %}
         <div class="row related-artist-entries">
           <div class="col-3">
-            <img class="related-artist-image" src="{{album.artist.artist_pic}}">
+            {% if artist.profile_pic != null %}
+              <img class="related-artist-image" src="{{album.artist.artist_pic}}">
+            {% else %}
+              <img src = "/static/images/empty_Person.jpg" style="width:50px; height:50px">
+            {% endif %}
           </div>
           <div class="col-9">
             <p class="related-artist-name"><a href="{{album.artist.get_absolute_url}}">{{album.artist.name}}</a></p>
