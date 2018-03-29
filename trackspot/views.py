@@ -104,7 +104,6 @@ def album(request, **kwargs):
         }
     )
 
-
 def album_main(request, **kwargs):
     albums = Album.objects.all()
     return render(
@@ -177,7 +176,6 @@ def artist(request, **kwargs):
         'top_songs':top_songs
         }
     )
-    
 
 def critic(request, **kwargs):
     critic_id = kwargs['pk']
@@ -210,35 +208,34 @@ def song(request, **kwargs):
     review_user_rating_perfect = 100
     song_reviews_users = Review.objects.filter(song__id=song.id).filter(user__critic=None)
     song_reviews_critics = Review.objects.filter(song__id=song.id).exclude(user__critic=None)
-    
-    
+	
+	
     review_user_count_critic = Review.objects.filter(song=song_id).exclude(user__critic=None).count()
     review_user_rating_total_critic = Review.objects.filter(song=song_id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_critic != 0):
         review_user_rating_average_critic = int(round(review_user_rating_total_critic / review_user_count_critic))
     else:
         review_user_rating_average_critic = 'No Reviews'
-    
+	
     review_user_count_user = Review.objects.filter(song=song_id).filter(user__critic=None).count()
     review_user_rating_total_user = Review.objects.filter(song=song_id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_user != 0):
         review_user_rating_average_user = int(round(review_user_rating_total_user / review_user_count_user))
     else:
-        review_user_rating_average_user = 'No Reviews'
-    
+	    review_user_rating_average_user = 'No Reviews'
+	
     return render(request, 
-    'trackspot/song.html',
-    context = {
-    'song':song,
+	'trackspot/song.html',
+	context = {
+	'song':song,
     'album_songs':album_songs,
     'song_reviews_users':song_reviews_users,
     'song_reviews_critics':song_reviews_critics,
     'review_user_rating_average_critic':review_user_rating_average_critic,
     'review_user_rating_average_user':review_user_rating_average_user,
-    'review_user_rating_perfect':review_user_rating_perfect
-    }
-    )
-
+	'review_user_rating_perfect':review_user_rating_perfect
+	}
+	)
 
 class UserDetailView(generic.DetailView):
     # user_id = kwargs['pk']
