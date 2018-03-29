@@ -11,11 +11,11 @@
 
     <div class="main-section">
       <h2 class="header">{{artist.name}}</h2>
-      <img class="artist-image" src="images/young thug.jpg">
+      <img class="artist-image" src="{{artist.artist_pic}}">
     </div>
 
     <div class="main-section">
-      <h2 class="header">Popular Albums</h2>
+      <h2 class="header">Albums</h2>
       <div class="row titles">
         <div class="col-4">
           <h4 class="scores">Album</h4>
@@ -33,13 +33,13 @@
           <img class="album-entry-image" src="{{album.image_url}}">
         </div>
         <div class="col-4">
-          <p class="album-entry-name">{{album.name}}</p>
+          <p class="album-entry-name"><a href="{{album.get_absolute_url}}">{{album.name}}</a></p>
         </div>
         <div class="col-3">
-          <p class="album-entry-critic-score">63/100</p>
+          <p class="album-entry-critic-score">{{album.critic_score}}</p>
         </div>
         <div class="col-3">
-          <p class="album-entry-user-score">68/100</p>
+          <p class="album-entry-user-score">{{album.user_score}}</p>
         </div>
         {%endfor%}
       </div>
@@ -115,15 +115,19 @@
     </div>
     <div class="top-songs-section">
       <h2 class="header">Top Songs</h2>
-      <div class="row top-songs-entry">
-        <div class="col-3">
-          <img class="top-song-image" src="images/birds.jpg">
-        </div>
-        <div class="col-9">
-          <p class="top-song-name">Pick Up The Phone </p>
-        </div>
-      </div>
-
+      {%for album in albums%}
+        {% for song in album.topsongs%}
+        <div class="row top-songs-entry">
+          <div class="col-3">
+           <img class="top-song-image" src="{{song.image_url}}">
+         </div>
+          <div class="col-9">
+           <p class="top-song-name">{{song.name}}</p>
+          </div>
+       </div>
+       {% end for %}
+      {% end for %}
+      <!--
       <div class="row top-songs-entry">
         <div class="col-3">
           <img class="top-song-image" src="images/havana2.jpg">
@@ -177,7 +181,7 @@
           <p class="top-song-name">Ice Melts</p>
         </div>
       </div>
-
+      -->
 
     </div>
 
@@ -185,15 +189,18 @@
   <div class="col-sm-3">
     <div class="related-artists">
       <h2 class="header">Related Artists</h2>
+      {% for album in albums_same_genre %}
       <div class="row related-artist-entries">
         <div class="col-3">
-          <img class="related-artist-image" src="images/future.jpg">
+          <img class="related-artist-image" src="{{album.artist.artist_pic}}">
         </div>
         <div class="col-9">
-          <p class="related-artist-name">Future</p>
+          <p class="related-artist-name">{{album.artist.name}}</p>
         </div>
       </div>
+      {% end for}
 
+      <!--
       <div class="row related-artist-entries">
         <div class="col-3">
           <img class="related-artist-image" src="images/travis.jpg">
@@ -238,6 +245,7 @@
           <p class="related-artist-name">Ty Dolla $ign</p>
         </div>
       </div>
+    -->
     </div>
   </div>
 </div>
