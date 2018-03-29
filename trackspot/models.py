@@ -96,6 +96,9 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+    def sorted_reviews(self):
+        return self.review_set.order_by('rating')
+
     def get_absolute_url(self):
         """
         Returns the url to access a particular instance of the model.
