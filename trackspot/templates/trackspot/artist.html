@@ -115,18 +115,17 @@
     </div>
     <div class="top-songs-section">
       <h2 class="header">Top Songs</h2>
-      {%for album in albums%}
-        {% for song in album.topsongs%}
-        <div class="row top-songs-entry">
-          <div class="col-3">
-           <img class="top-song-image" src="{{song.image_url}}">
-         </div>
-          <div class="col-9">
-           <p class="top-song-name">{{song.name}}</p>
-          </div>
-       </div>
-       {% end for %}
-      {% end for %}
+      {% for song in top_songs%}
+      <div class="row top-songs-entry">
+        <div class="col-3">
+        <img class="top-song-image" src="{{song.album.image_url}}">
+        </div>
+        <div class="col-9">
+          <p class="top-song-name"><a href="{{song.get_absolute_url}}">{{song.name}}</a></p>
+        </div>
+      </div>
+      {% endfor %}
+      
       <!--
       <div class="row top-songs-entry">
         <div class="col-3">
@@ -190,15 +189,15 @@
     <div class="related-artists">
       <h2 class="header">Related Artists</h2>
       {% for album in albums_same_genre %}
-      <div class="row related-artist-entries">
-        <div class="col-3">
-          <img class="related-artist-image" src="{{album.artist.artist_pic}}">
+        <div class="row related-artist-entries">
+          <div class="col-3">
+            <img class="related-artist-image" src="{{album.artist.artist_pic}}">
+          </div>
+          <div class="col-9">
+            <p class="related-artist-name"><a href="{{ablum.artist.get_absolute_url}}">{{album.artist.name}}</a></p>
+         </div>
         </div>
-        <div class="col-9">
-          <p class="related-artist-name">{{album.artist.name}}</p>
-        </div>
-      </div>
-      {% end for}
+      {% endfor %}
 
       <!--
       <div class="row related-artist-entries">
