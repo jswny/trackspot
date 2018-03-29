@@ -46,7 +46,7 @@
     {% for review in user.sorted_reviews %}
     <div class="row">
       <div class="col-lg-4"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4">{{review.song.album.name}}</div>
       <div id="play-icon" class="col-lg-4">
         <i class="far fa-play-circle"></i>
       </div>
