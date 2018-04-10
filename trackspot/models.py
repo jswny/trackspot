@@ -93,7 +93,7 @@ class Profile(models.Model):
     bio = models.CharField(help_text='Enter a bio for this user', max_length=500)
     location = models.CharField(help_text='Enter a location for this user', max_length=50)
     profile_pic = models.CharField(help_text='Enter a URL for the profile pic for this user', max_length=500, null=True)
-    organization = models.CharField(help_text='Enter a location for this user', max_length=50)
+    organization = models.CharField(help_text='Enter a location for this user', max_length=50, null=True, blank=True)
     
     def __str__(self):
         return self.name
