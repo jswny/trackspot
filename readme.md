@@ -7,6 +7,9 @@
 - Each of these models has an associated `Profile` model, which contains the extra information such as location and bio
 - The `Profile` model has an optional `organization` field, which should be restricted so that it is always blank for Trackspotters but available to critics
 
+### Getting the Current User
+If you need to access the current user in a view, you can access it with `request.user`.
+
 ### Checking the Type for a Given User
 To identify which kind of user the user that you have is (Trackspotter or Critic), you simply have to access the groups which are associated with that user model. To do this, you can use something like the following query:
 ```python
