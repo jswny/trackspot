@@ -236,6 +236,9 @@ def song(request, **kwargs):
 	'review_user_rating_perfect':review_user_rating_perfect
 	}
 	)
+def login(request, **kwargs):
+
+
 
 class UserDetailView(generic.DetailView):
     # user_id = kwargs['pk']
