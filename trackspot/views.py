@@ -237,6 +237,7 @@ def song(request, **kwargs):
 	}
 	)
 def login(request, **kwargs):
+    login_id = kwargs['pk']
 
 
 
