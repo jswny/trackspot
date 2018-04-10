@@ -23,7 +23,13 @@
           <p><img class="img-thumbnail albums-the_album-thumbnail" src="{{the_album.image_url}}"></p>
         </div>
         <div class="col-sm-6">
-          <h4><span class="badge badge-primary score-overall">Overall Score<br>{{review_user_rating_average}} / {{review_user_rating_perfect}}</span></h4>
+          <h4><span class="badge badge-pill badge-primary score-overall">
+            {% if review_critic or review_user %}
+            Overall Score<br>
+              {{review_rating_overall}} / {{review_user_rating_perfect}}</span></h4>
+            {% else %}
+              No reviews yet!
+            {% endif %}
         </div>
       </div>
       <!-- Album Description -->
@@ -64,10 +70,12 @@
 
         </div>
       </div>
+
       <!-- Critic Score -->
+      {% if review_critic %}
       <div class="row">
         <div class="col-sm-12">
-          <h4><span class="badge badge-success">User Score : {{review_user_rating_average}} / {{review_user_rating_perfect}} </span></h4>
+          <h4><span class="badge badge-pill badge-danger">Critic Score : {{review_critic_rating_average}} / {{review_critic_rating_perfect}} </span></h4>
         </div>
       </div>
       <!-- Review Table -->
@@ -76,25 +84,60 @@
           <table class="table table-hover table-condensed albums-the_album-review">
             <thead>
               <tr>
-                <th class="col-sm-12">Critic</th>
-                <th class="col-sm-3">Review</th>
-                <th class="col-sm-3">Score</th>
+                <th >Review</th>
+                <th >Song</th>
+                <th >Review</th>
+                <th >Score</th>
               </tr>
             </thead>
             <tbody>
-              {% if review_user %}
-                {% for review in review_user %}
+                {% for review in review_critic %}
                   <tr>
-                    <td>{{review.description}}</td>
-                    <td>{{review.user}}</td>
-                    <td>{{review.rating}}</td>
+                    <td class="col-sm-1">{{review.description}}</td>
+                    <td class="col-sm-1">{{review.song}}</td>
+                    <td class="col-sm-8">{{review.user}}</td>
+                    <td class="col-sm-1">{{review.rating}}</td>
                   </tr>
                 {% endfor %}
-              {% endif %}
             </tbody>
           </table>
         </div>
       </div>
+      {% endif %}
+
+      <!-- User Score -->
+      {% if review_user %}
+      <div class="row">
+        <div class="col-sm-12">
+          <h4><span class="badge badge-pill badge-success">User Score : {{review_user_rating_average}} / {{review_user_rating_perfect}} </span></h4>
+        </div>
+      </div>
+      <!-- Review Table -->
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-hover table-condensed albums-the_album-review">
+            <thead>
+              <tr>
+                <th >Review</th>
+                <th >Song</th>
+                <th >User</th>
+                <th >Score</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for review in review_user %}
+                  <tr>
+                    <td class="col-sm-1">{{review.description}}</td>
+                    <td class="col-sm-1">{{review.song}}</td>
+                    <td class="col-sm-8">{{review.user}}</td>
+                    <td class="col-sm-1">{{review.rating}}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% endif %}
+      
     </div>
   </div>
 </div>

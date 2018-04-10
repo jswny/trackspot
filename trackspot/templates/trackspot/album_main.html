@@ -5,20 +5,49 @@
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/album.css' %}">{% endblock %}
 
 {% block content %}
+
+<!-- Page Title -->
 <div class="row">
 	<div class="col-sm-12">
-		<p>Albums</p>
+		<br><br>
+		<h1>Albums</h1>
 	</div>
+</div>
+
+{% if albums %}
+<div class="row">
 	<div class="col-sm-12">
-
-		{% if albums %}
-			{% for album in albums %}
-				<p><a href="{{album.get_absolute_url}}">
-					<img class="albums-album-art" src="{{album.image_url}}" width=100px height=100px> {{album.name}}
-				</a></p>
-			{% endfor %}
-
-		{% else %}
-			<p>No Albums</p>
-		{% endif %}
+				<table>
+					<th>
+					</th>
+					<tbody>
+						<tr>
+						{% for album in albums %}
+							<td>
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<a href="{{album.get_absolute_url}}">
+													<img class="img-thumbnail d-block albums-main-thumbnail" src="{{album.image_url}}" 
+													  		data-toggle="tooltip" data-placement="top"
+																title="{{album.artist}} - {{album.name}}">
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							{% if forloop.counter|divisibleby:4 %}
+							</tr>	
+							{% endif %}
+						{% endfor %}
+						</tr>
+					</tbody>
+				</table>
+	</div>
+</div>
+{% else %}
+	<h2><small>No Albums</small></h2>
+{% endif %}
 {% endblock %}
