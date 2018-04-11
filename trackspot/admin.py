@@ -14,7 +14,7 @@ admin.site.register(Profile)
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
-    verbose_name_plural = 'employee'
+    verbose_name_plural = 'Profiles'
 
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline, )
