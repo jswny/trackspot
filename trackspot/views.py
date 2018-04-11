@@ -201,17 +201,18 @@ def song(request, **kwargs):
     else:
 	    review_user_rating_average_user = 'No Reviews'
 	
-    return render(request, 
-	'trackspot/song.html',
-	context = {
-	'song':song,
-    'album_songs':album_songs,
-    'song_reviews_users':song_reviews_users,
-    'song_reviews_critics':song_reviews_critics,
-    'review_user_rating_average_critic':review_user_rating_average_critic,
-    'review_user_rating_average_user':review_user_rating_average_user,
-	'review_user_rating_perfect':review_user_rating_perfect
-	}
+    return render(
+        request, 
+        'trackspot/song.html',
+        context = {
+            'song':song,
+            'album_songs':album_songs,
+            'song_reviews_users':song_reviews_users,
+            'song_reviews_critics':song_reviews_critics,
+            'review_user_rating_average_critic':review_user_rating_average_critic,
+            'review_user_rating_average_user':review_user_rating_average_user,
+            'review_user_rating_perfect':review_user_rating_perfect
+        }
 	)
 
 def user(request, **kwargs):

@@ -20,6 +20,34 @@ groups = u.groups.values_list()
 ```
 `u.groups.values_list()` will return a Django [QuerySet](https://docs.djangoproject.com/en/2.0/ref/models/querysets/) of which each entry is a tuple of `(group_id, group_name)` like `(1, 'Trackspotters')`. If you want to get just the name of a specific group, you can do something like `u.groups.values_list()[0][1]`, which will return the name (the second entry in the tuuple) of the first tuple from the queryset.
 
+### Querying Groups
+To get either kind of groups, do one of the following:
+* `Group.objects.get(name='Trackspotters')`
+* `Group.objects.get(name='Critics')`
+
+## Querying Reviews for Albums or Songs
+In order to find all critic and trackspotter (normal user) reviews for a given album, you can do something like this:
+```python
+critics = Group.objects.get(name='Critics')
+trackspotters = Group.objects.get(name='Trackspotters')
+
+album = Album.objects.get(id=1)
+
+critic_reviews = Review.objects.filter(album__id=album.id).filter(user__groups=trackspotters)
+trackspotter_reviews = Review.objects.filter(album__id=album.id).filter(user__groups=critics)
+```
+
+You can also get both kinds of reviews for a song similarly:
+```python
+critics = Group.objects.get(name='Critics')
+trackspotters = Group.objects.get(name='Trackspotters')
+
+song = Song.objects.get(id=1)
+
+critic_reviews = Review.objects.filter(song__id=song.id).filter(user__groups=trackspotters)
+trackspotter_reviews = Review.objects.filter(song__id=song.id).filter(user__groups=critics)
+```
+
 ### Querying Profile Data
 Querying the profile data for a given user (the parent Django auth model) is simple:
 ```python
