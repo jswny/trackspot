@@ -8,7 +8,9 @@
 - The `Profile` model has an optional `organization` field, which should be restricted so that it is always blank for Trackspotters but available to critics
 
 ### Getting the Current User
-If you need to access the current user in a view, you can access it with `request.user`.
+If you need to access the current user in a view or a template, you can access it with `request.user`, or `{{ user }}` in a template (since the `request` object is automatically loaded into the view for use).
+
+To check if the user is logged in, use `request.user.is_authenticated()` in a view or something like `{% if user.is_authenticated() %}` in a template.
 
 ### Checking the Type for a Given User
 To identify which kind of user the user that you have is (Trackspotter or Critic), you simply have to access the groups which are associated with that user model. To do this, you can use something like the following query:
@@ -36,4 +38,6 @@ The following groups are defined:
 | Username | Password | Type |
 | -------- | -------- | ---- |
 | `john_doe` | `compsci326` | Trackspotter |
+| `bob_smith` | `compsci326` | Trackspotter |
 | `fantano` | `compsci326` | Critic |
+| `mason` | `compsci326` | Critic |
