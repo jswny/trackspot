@@ -116,14 +116,87 @@ def album_main(request, **kwargs):
 
 def artist(request, **kwargs):
     artist_id = kwargs['pk']
-    return render(request, 'trackspot/artist.html')
+    artist = Artist.objects.get(pk=artist_id)
+    albums = Album.objects.filter(artist__id=artist_id)
+
+
+    for album in albums:
+        genre = album.genre
+        albums_same_genre = Album.objects.filter(genre=genre)
+
+        user_reviews = Review.objects.filter(album=album.id).filter(user__critic=None)
+        critic_reviews = Review.objects.filter(album=album.id).exclude(user__critic=None)
+        
+        user_count = Review.objects.filter(album=album.id).filter(user__critic=None).count()
+        user_total_rating = Review.objects.filter(album=album.id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+        critic_count = Review.objects.filter(album=album.id).exclude(user__critic=None).count()
+        critic_total_rating = Review.objects.filter(album=album.id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+        
+        if(critic_count != 0):
+            album.critic_score = int(round(critic_total_rating/critic_count))
+        else:
+            album.critic_score = 'None'
+        if(user_count != 0):
+            album.user_score = int(round(user_total_rating/user_count))
+        else:
+            album.user_score = 'None'
+
+        i=0
+        top_songs = []
+        for song in Song.objects.filter(album=album.id):
+
+            user_song_reviews = Review.objects.filter(song=song.id).filter(user__critic=None)
+            critic_song_reviews = Review.objects.filter(song=song.id).exclude(user__critic=None)
+        
+            user_song_count = Review.objects.filter(song=song.id).filter(user__critic=None).count()
+            user_song_total_rating = Review.objects.filter(song=song.id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+            critic_song_count = Review.objects.filter(song=song.id).exclude(user__critic=None).count()
+            critic_song_total_rating = Review.objects.filter(song=song.id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+
+
+            if(critic_song_count != 0):
+                song_critic_rating = int(round(critic_song_total_rating/critic_song_count))
+                if(song_critic_rating>70):
+                    top_songs.append(song)
+                    i+=1
+            else:
+                song_critic_rating = 'None'
+            if(user_song_count != 0):
+                song_user_rating = int(round(user_song_total_rating/user_song_count))
+            else:
+                song_user_rating = 'None'
+
+
+    return render(request, 
+        'trackspot/artist.html', 
+        context = {
+        'artist':artist,
+        'albums':albums,
+        'albums_same_genre':albums_same_genre,
+        'top_songs':top_songs
+        }
+    )
 
 def critic(request, **kwargs):
     critic_id = kwargs['pk']
-    critics = Critic.objects.all()
+    curr_critic = Critic.objects.get(pk=critic_id)
+    critics = Critic.objects.exclude(id=critic_id)
+    song_reviews = Review.objects.filter(user__id=critic_id)
+    critic_id1 = critic_id
+    total_rating = Review.objects.filter(user__id=critic_id1).aggregate(Sum('rating'))['rating__sum']
+    review_count = Review.objects.filter(user__id=critic_id1).count()
+    if review_count == 0:
+     average_rating = 0
+    else:
+        average_rating = float("{0:.1f}".format(total_rating / review_count))
     return render(request, 'trackspot/critic.html', 
         context = {
-        'critics':critics
+        'critics':critics,
+        'song_reviews':song_reviews,
+        'curr_critic':curr_critic,
+        'review_count':review_count,
+        'total_rating':total_rating,
+        'average_rating':average_rating
         }
         )
 
