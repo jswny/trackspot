@@ -125,13 +125,16 @@ def artist(request, **kwargs):
         genre = album.genre
         albums_same_genre = Album.objects.filter(genre=genre)
 
-        user_reviews = Review.objects.filter(album=album.id).filter(user__critic=None)
-        critic_reviews = Review.objects.filter(album=album.id).exclude(user__critic=None)
+        critics = Group.objects.get(name='Critics')
+        trackspotters = Group.objects.get(name='Trackspotters')
+
+        user_reviews = Review.objects.filter(album=album.id).filter(user__groups=trackspotters)
+        critic_reviews = Review.objects.filter(album=album.id).filter(user__groups=critics)
         
-        user_count = Review.objects.filter(album=album.id).filter(user__critic=None).count()
-        user_total_rating = Review.objects.filter(album=album.id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
-        critic_count = Review.objects.filter(album=album.id).exclude(user__critic=None).count()
-        critic_total_rating = Review.objects.filter(album=album.id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+        user_count = user_reviews.count()
+        user_total_rating = user_reviews.aggregate(Sum('rating'))['rating__sum']
+        critic_count = critic_reviews.count()
+        critic_total_rating = critic_reviews.aggregate(Sum('rating'))['rating__sum']
         
         if(critic_count != 0):
             album.critic_score = int(round(critic_total_rating/critic_count))
@@ -146,13 +149,13 @@ def artist(request, **kwargs):
         top_songs = []
         for song in Song.objects.filter(album=album.id):
 
-            user_song_reviews = Review.objects.filter(song=song.id).filter(user__critic=None)
-            critic_song_reviews = Review.objects.filter(song=song.id).exclude(user__critic=None)
+            user_song_reviews = Review.objects.filter(song=song.id).filter(user__groups=trackspotters)
+            critic_song_reviews = Review.objects.filter(song=song.id).filter(user__groups=critics)
         
-            user_song_count = Review.objects.filter(song=song.id).filter(user__critic=None).count()
-            user_song_total_rating = Review.objects.filter(song=song.id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
-            critic_song_count = Review.objects.filter(song=song.id).exclude(user__critic=None).count()
-            critic_song_total_rating = Review.objects.filter(song=song.id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+            user_song_count = Review.objects.filter(song=song.id).filter(user__groups=trackspotters).count()
+            user_song_total_rating = Review.objects.filter(song=song.id).filter(user__groups=trackspotters).aggregate(Sum('rating'))['rating__sum']
+            critic_song_count = Review.objects.filter(song=song.id).filter(user__groups=critics).count()
+            critic_song_total_rating = Review.objects.filter(song=song.id).filter(user__groups=critics).aggregate(Sum('rating'))['rating__sum']
 
 
             if(critic_song_count != 0):
