@@ -1,5 +1,15 @@
 # TrackSpot
 
+## Git
+### Fixing the Database
+When your branch says your database has changed but you know that you haven't changed it, do the following:
+1. Delete your local database file `db.sqlite3`
+2. Download the latest master database from [here](https://github.com/jswny/trackspot/raw/tommy/db.sqlite3)
+3. Put this file back into your directory where you deleted the old one
+4. Commit this and push if necessary
+
+Then, when you go on your branch on GitHub and click the "compare" button below the "clone or download" button, it should **NOT** show that your database has changes.
+
 ## Users, Critics, & Groups
 ### Structure
 - The previous `User` and `Critic` models have been removed, along with any of the existing entities which were in the database.
