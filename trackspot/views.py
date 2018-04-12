@@ -48,22 +48,25 @@ def album(request, **kwargs):
     album_id = kwargs['pk']
     the_album = Album.objects.all()[album_id-1]
     song_list = Song.objects.filter(album=album_id)
+    
+    critics = Group.objects.get(name='Critics')
+    trackspotters = Group.objects.get(name='Trackspotters')
 
     # Critic Review
-    review_critic = Review.objects.filter(album=album_id).exclude(user__critic=None)
-    review_critic_count = Review.objects.filter(album=album_id).exclude(user__critic=None).count()
+    review_critic = Review.objects.filter(album=album_id).filter(user__groups=critics)
+    review_critic_count = review_critic.count()
     review_critic_rating_perfect = 100    
-    review_critic_rating_total = Review.objects.filter(album=album_id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+    review_critic_rating_total = review_critic.aggregate(Sum('rating'))['rating__sum']
     if review_critic_count == 0:
         review_critic_rating_average = 0
     else:
         review_critic_rating_average = float("{0:.1f}".format(review_critic_rating_total / review_critic_count))
 
     # User Review
-    review_user = Review.objects.filter(album=album_id).filter(user__critic=None)
-    review_user_count = Review.objects.filter(album=album_id).filter(user__critic=None).count()
+    review_user = Review.objects.filter(album=album_id).filter(user__groups=critics)
+    review_user_count = review_user.count()
     review_user_rating_perfect = 100    
-    review_user_rating_total = Review.objects.filter(album=album_id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+    review_user_rating_total = review_user.aggregate(Sum('rating'))['rating__sum']
     if review_user_count == 0:
         review_user_rating_average = 0
     else:
