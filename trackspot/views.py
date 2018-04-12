@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.db.models import Sum
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import generic
+from django.contrib.auth.models import User, Group
 
 # Create your views here.
 
@@ -183,19 +184,22 @@ def song(request, **kwargs):
     song = Song.objects.get(pk=song_id)
     album_songs = Song.objects.filter(album__id = song.album.id)
     review_user_rating_perfect = 100
-    song_reviews_users = Review.objects.filter(song__id=song.id).filter(user__critic=None)
-    song_reviews_critics = Review.objects.filter(song__id=song.id).exclude(user__critic=None)
+
+    critics = Group.objects.get(name='Critics')
+    trackspotters = Group.objects.get(name='Trackspotters')
+
+    song_reviews_users = Review.objects.filter(song__id=song.id).filter(user__groups=trackspotters)
+    song_reviews_critics = Review.objects.filter(song__id=song.id).filter(user__groups=critics)
 	
-	
-    review_user_count_critic = Review.objects.filter(song=song_id).exclude(user__critic=None).count()
-    review_user_rating_total_critic = Review.objects.filter(song=song_id).exclude(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+    review_user_count_critic = song_reviews_critics.count()
+    review_user_rating_total_critic = song_reviews_critics.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_critic != 0):
         review_user_rating_average_critic = int(round(review_user_rating_total_critic / review_user_count_critic))
     else:
         review_user_rating_average_critic = 'No Reviews'
 	
-    review_user_count_user = Review.objects.filter(song=song_id).filter(user__critic=None).count()
-    review_user_rating_total_user = Review.objects.filter(song=song_id).filter(user__critic=None).aggregate(Sum('rating'))['rating__sum']
+    review_user_count_user = song_reviews_users.count()
+    review_user_rating_total_user = song_reviews_users.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_user != 0):
         review_user_rating_average_user = int(round(review_user_rating_total_user / review_user_count_user))
     else:

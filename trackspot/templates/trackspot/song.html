@@ -92,7 +92,7 @@
 				{% for critic_review in song_reviews_critics %}
                 <tr>
 				<td>{{critic_review.description}}</td>
-                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user.name}}</a></td>
+                  <td><a href="{{critic_review.user.get_absolute_url}}">{{critic_review.user.profile.name}}</a></td>
                   
                   <td>{{critic_review.rating}}</td>
                 </tr>
