@@ -4,7 +4,7 @@
 ### Fixing the Database
 When your branch says your database has changed but you know that you haven't changed it, do the following:
 1. Delete your local database file `db.sqlite3`
-2. Download the latest master database from [here](https://github.com/jswny/trackspot/raw/tommy/db.sqlite3)
+2. Download the latest master database from [here](https://github.com/jswny/trackspot/raw/master/db.sqlite3)
 3. Put this file back into your directory where you deleted the old one
 4. Commit this and push if necessary
 
