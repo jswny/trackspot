@@ -10,3 +10,7 @@ urlpatterns = [
     path('song/<int:pk>', views.song, name='song'),
     path('user/<int:pk>', views.UserDetailView.as_view(), name='user'),
 ]
+
+urlpatterns += [   
+    path('user/<int:pk>/edit/', views.edit_profile, name='edit_profile'),
+]

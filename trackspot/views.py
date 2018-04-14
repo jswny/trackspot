@@ -241,3 +241,20 @@ class UserDetailView(generic.DetailView):
     # user_id = kwargs['pk']
     model = User
     template_name='trackspot/user.html'
+
+
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .forms import user_profile_form
+
+#Make a check to make sure it's your own profile
+def edit_profile(request, pk):
+    user_instance = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        form = user_profile_form(request.POST)
+        if form.is_valid():
+            user_instance.name = form.cleaned_data['display_name']
+            user_instance.location = form.cleaned_data['location']
+            user_instance.bio = form.cleaned_data['bio']
