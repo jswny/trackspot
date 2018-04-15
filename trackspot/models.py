@@ -1,8 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
 from django.urls import reverse
-
-# TODO: integrate users/critics with Django admin stuff?
+from django.contrib.auth.models import User
 
 class Artist(models.Model):
     name = models.CharField(help_text='Enter a name for this artist', max_length=100)
@@ -65,7 +64,7 @@ class Genre(models.Model):
 class Review(models.Model):
     description = models.CharField(help_text='Enter a description for this song', max_length=500)
     rating = models.PositiveIntegerField(validators=[MaxValueValidator(100)])
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # allow nulls so that reviews for songs and albums can be differentiated
     album = models.ForeignKey('Album', on_delete=models.CASCADE, null=True, blank=True)
     song = models.ForeignKey('Song', on_delete=models.CASCADE, null=True, blank=True)
@@ -86,12 +85,15 @@ class Review(models.Model):
         elif self.song is None:
             return 'album'
 
-class User(models.Model):
+# https://docs.djangoproject.com/en/2.0/topics/auth/customizing/#extending-the-existing-user-model
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(help_text='Enter a name for this user', max_length=50)
     # reviews -- connected via review foreign keys
     bio = models.CharField(help_text='Enter a bio for this user', max_length=500)
     location = models.CharField(help_text='Enter a location for this user', max_length=50)
     profile_pic = models.CharField(help_text='Enter a URL for the profile pic for this user', max_length=500, null=True)
+    organization = models.CharField(help_text='Enter a location for this user', max_length=50, null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -104,13 +106,3 @@ class User(models.Model):
         Returns the url to access a particular instance of the model.
         """
         return reverse('user', args=[str(self.id)])
-
-class Critic(User):
-    # inherits all other field from User class
-    organization = models.CharField(help_text='Enter a location for this critic', max_length=50)
-
-    def get_absolute_url(self):
-        """
-        Returns the url to access a particular instance of the model.
-        """
-        return reverse('critic', args=[str(self.id)])

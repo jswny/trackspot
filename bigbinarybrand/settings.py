@@ -117,4 +117,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/'
+=======
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: "/trackspot/user/%s" % u.id,
+}
+>>>>>>> master
