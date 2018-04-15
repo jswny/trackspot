@@ -271,3 +271,15 @@ class SongUpdate(UpdateView):
 
 class SongDelete(DeleteView):
 	model = Song
+
+# Artist
+class ArtistCreate(CreateView):
+	model = Artist
+	fields = '__all__'
+
+class ArtistUpdate(UpdateView):
+	model = Artist
+	fields = '__all__'
+
+class ArtistDelete(DeleteView):
+	model = Artist
