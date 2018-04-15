@@ -249,7 +249,7 @@ class UserDetailView(generic.DetailView):
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
 
 
@@ -257,12 +257,14 @@ class edit_trackspotter(UpdateView):
     model = Profile
     fields = {'name', 'bio', 'location', 'profile_pic'}
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': ''}
+    succuess_url =  reverse_lazy('UserDetailView')
 
 class edit_critic(UpdateView):
     model = Profile
     fields = {'name', 'bio', 'location', 'profile_pic', 'organization'}
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': '', 'organization': ''}
-
+    succuess_url =  reverse_lazy('UserDetailView')
+    
 #def edit_profile(request, pk):
 #    user_instance = get_object_or_404(User, pk=pk)
 #    if request.method == 'POST':
