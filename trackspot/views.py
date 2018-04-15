@@ -4,6 +4,8 @@ from django.db.models import Sum
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import generic
 from django.contrib.auth.models import User, Group
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -243,3 +245,17 @@ class UserDetailView(generic.DetailView):
     # user_id = kwargs['pk']
     model = User
     template_name='trackspot/user.html'
+
+
+# Hook pages to forms
+# Album
+class AlbumCreate(CreateView):
+	model = Album
+	fields = '__all__'
+
+class AlbumUpdate(UpdateView):
+	model = Album
+	fields = '__all__'
+
+class AlbumDelete(DeleteView):
+	model = Album
