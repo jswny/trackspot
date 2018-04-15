@@ -99,7 +99,7 @@ class Profile(models.Model):
         return self.name
 
     def sorted_reviews(self):
-        return self.review_set.order_by('rating')
+        return self.user.review_set.order_by('rating')
 
     def get_absolute_url(self):
         """

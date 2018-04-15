@@ -5,10 +5,13 @@
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/user.css' %}">{% endblock %}
 
 {% block content %}
-
 <div class="row">
   <div class="col-lg-6">
-    <h1>Profile</h1>
+    <h1>Profile 
+      {% ifequal request.user.id user.id %}
+      <u><a href="https://www.google.com/" style="font-size: 20px;">Edit</a></u>
+      {% endifequal %}
+    </h1>
   </div>
   <div class="col-lg-6">
     <h1 id="favorite">Highest-Rated Songs</h1>
@@ -20,19 +23,18 @@
   <!-- Profile -->
   <div class="col-lg-6 profile">
     <div class='col-lg-4'>
-      {% if user.profile.profile_pic %}
-        <img id="pic" src="{{user.profile.profile_pic}}"/>
-      {% else %}
-        <img id="pic" src=https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png>
-      {% endif %}
+      <img id="pic" src=https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png>
     </div>
     <div class="col-lg-8 textbox" style="width:200px; height:200px">
       <p>Name: {{user.profile.name}}</p>
       <p>Location: {{user.profile.location}}</p>
+      {% if user.profile.organization %}
+      <p>Organization: {{user.profile.organization}}</p>
+      {% endif %}
       <p>Number of Reviews: {{user.review_set.all.count}}</p>
     </div>
     <div style="width:400px">
-      <p>{{user.bio}}</p>
+      <p>{{user.profile.bio}}</p>
     </div>
   </div>
   <!-- Favorite Songs -->
@@ -48,7 +50,7 @@
         <b>Play</b>
       </div>
     </div>
-    {% for review in user.sorted_reviews %}
+    {% for review in user.profile.sorted_reviews %}
     <div class="row">
       {% if review.album %}
         <div class="col-lg-4"><a href="{{review.album.get_absolute_url}}">{{review.album}}</a></div>
@@ -90,7 +92,10 @@
     <div class="col-lg-2"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
   {% endif %}
   <div class="col-lg-8">{{review.description}}</div>
-  <div class="col-lg-2">{{review.rating}}</div>
+  <div class="col-lg-1">{{review.rating}}</div>
+  {% ifequal request.user.id user.id %}
+  <div class="col-lg-1"><a href="">Edit</a></div>
+  {% endifequal %}
 </div>
 {% endfor %}
 {% endblock %}
