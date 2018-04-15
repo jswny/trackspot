@@ -257,14 +257,19 @@ class edit_trackspotter(UpdateView):
     model = Profile
     fields = {'name', 'bio', 'location', 'profile_pic'}
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': ''}
-    succuess_url =  reverse_lazy('UserDetailView')
+
+    def get_success_url(self):
+       user_id=self.request.user.id
+       return reverse('user', kwargs={'pk':user_id})
 
 class edit_critic(UpdateView):
     model = Profile
     fields = {'name', 'bio', 'location', 'profile_pic', 'organization'}
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': '', 'organization': ''}
-    succuess_url =  reverse_lazy('UserDetailView')
-    
+
+    def get_success_url(self):
+       user_id=self.request.user.id
+       return reverse('user', kwargs={'pk':user_id})
 #def edit_profile(request, pk):
 #    user_instance = get_object_or_404(User, pk=pk)
 #    if request.method == 'POST':
