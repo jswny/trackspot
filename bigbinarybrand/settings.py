@@ -117,7 +117,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = "/trackspot/user"
+LOGIN_REDIRECT_URL = '/'
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: "/trackspot/user/%s" % u.id,
