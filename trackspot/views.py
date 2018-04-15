@@ -249,7 +249,7 @@ class UserDetailView(generic.DetailView):
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import user_profile_form
+from .forms import edit_profile_form
 
 #Make a check to make sure it's your own profile
 def edit_profile(request, pk):
