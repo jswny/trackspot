@@ -249,7 +249,7 @@ class UserDetailView(generic.DetailView):
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import edit_profile_form
+
 from django.views.generic.edit import UpdateView
 
 
@@ -263,18 +263,17 @@ class edit_critic(UpdateView):
     fields = '__all__'
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': '', 'organization': ''}
 
-'''def edit_profile(request, pk):
-    user_instance = get_object_or_404(User, pk=pk)
-    if request.method == 'POST':
-        form = user_profile_form(request.POST)
-        if form.is_valid():
-            user_instance.name = form.cleaned_data['name']
-            user_instance.location = form.cleaned_data['location']
-            user_instance.bio = form.cleaned_data['bio']
-            user_instance.profile_pic = form.cleaned_data['profile_pic']
-            user_instance.save()
-            return HttpResponseRedirect(reverse('user'))
-    else:
-        form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
-    return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
-'''
+#def edit_profile(request, pk):
+#    user_instance = get_object_or_404(User, pk=pk)
+#    if request.method == 'POST':
+#        form = user_profile_form(request.POST)
+#        if form.is_valid():
+#            user_instance.name = form.cleaned_data['name']
+#            user_instance.location = form.cleaned_data['location']
+#            user_instance.bio = form.cleaned_data['bio']
+#            user_instance.profile_pic = form.cleaned_data['profile_pic']
+#            user_instance.save()
+#            return HttpResponseRedirect(reverse('user'))
+#    else:
+#        form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
+#    return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
