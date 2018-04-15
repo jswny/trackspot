@@ -249,10 +249,15 @@ class UserDetailView(generic.DetailView):
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import user_profile_form
+from .forms import edit_profile_form
+from django.views.generic.edit import UpdateView
 
-#Make a check to make sure it's your own profile
-def edit_profile(request, pk):
+class edit_profile(UpdateView):
+    model = Profile
+    fields = '__all__'
+    initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': ''}
+
+'''def edit_profile(request, pk):
     user_instance = get_object_or_404(User, pk=pk)
     if request.method == 'POST':
         form = user_profile_form(request.POST)
@@ -266,3 +271,4 @@ def edit_profile(request, pk):
     else:
         form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
     return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
+'''
