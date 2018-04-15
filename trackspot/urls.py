@@ -7,12 +7,8 @@ urlpatterns = [
     path('album/<int:pk>', views.album, name='album'),
     path('artist/<int:pk>', views.artist, name='artist'),
     path('song/<int:pk>', views.song, name='song'),
-<<<<<<< HEAD
     path('user/<int:pk>', views.UserDetailView.as_view(), name='user'),
-    path('login/', views.login name='login'),
-]
-
-=======
+    path('login/<int:pk>', views.login, name='login'),
     path('user/<int:pk>', views.user, name='user'),
 ]
 
@@ -27,4 +23,3 @@ urlpatterns += [
 	path('artist/<int:pk>/update/', views.ArtistUpdate.as_view(), name='artist_update'),
 	path('artist/<int:pk>/delete/', views.ArtistDelete.as_view(), name='artist_delete'),
 ]
->>>>>>> master
