@@ -255,12 +255,12 @@ from django.views.generic.edit import UpdateView
 
 class edit_trackspotter(UpdateView):
     model = Profile
-    fields = '__all__'
+    fields = {'name', 'bio', 'location', 'profile_pic'}
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': ''}
 
 class edit_critic(UpdateView):
     model = Profile
-    fields = '__all__'
+    fields = {'name', 'bio', 'location', 'profile_pic', 'organization'}
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': '', 'organization': ''}
 
 #def edit_profile(request, pk):
