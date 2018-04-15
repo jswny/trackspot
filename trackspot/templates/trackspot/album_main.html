@@ -27,11 +27,14 @@
 								<table>
 									<tbody>
 										<tr>
-											<td>
+											<td class="albums-main-thumbnail" style="padding:30px">
 												<a href="{{album.get_absolute_url}}">
+													<p>
 													<img class="img-thumbnail d-block albums-main-thumbnail" src="{{album.image_url}}" 
 													  		data-toggle="tooltip" data-placement="top"
 																title="{{album.artist}} - {{album.name}}">
+													</p>
+													<p>{{album.artist}} - {{album.name}}</p>
 												</a>
 											</td>
 										</tr>
