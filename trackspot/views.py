@@ -304,3 +304,14 @@ class ArtistUpdate(UpdateView):
 
 class ArtistDelete(DeleteView):
 	model = Artist
+
+class ReviewCreate(CreateView):
+	model = Review
+	fields = '__all__'
+
+class ReviewUpdate(CreateView):
+	model = Review
+	fields = '__all__'
+
+class ReviewDelete(CreateView):
+	model = Review
