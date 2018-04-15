@@ -247,8 +247,6 @@ class UserDetailView(generic.DetailView):
     template_name='trackspot/user.html'
 
 
-<<<<<<< HEAD
-
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -269,7 +267,7 @@ def edit_profile(request, pk):
     else:
         form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
     return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
-=======
+
 # Hook pages to forms
 # Album
 class AlbumCreate(CreateView):
@@ -306,4 +304,3 @@ class ArtistUpdate(UpdateView):
 
 class ArtistDelete(DeleteView):
 	model = Artist
->>>>>>> master
