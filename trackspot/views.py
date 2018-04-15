@@ -252,10 +252,16 @@ from django.urls import reverse
 from .forms import edit_profile_form
 from django.views.generic.edit import UpdateView
 
-class edit_profile(UpdateView):
+
+class edit_trackspotter(UpdateView):
     model = Profile
     fields = '__all__'
     initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': ''}
+
+class edit_critic(UpdateView):
+    model = Profile
+    fields = '__all__'
+    initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': '', 'organization': ''}
 
 '''def edit_profile(request, pk):
     user_instance = get_object_or_404(User, pk=pk)
