@@ -4,6 +4,8 @@ from django.db.models import Sum
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import generic
 from django.contrib.auth.models import User, Group
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -224,6 +226,17 @@ def song(request, **kwargs):
             'review_user_rating_perfect':review_user_rating_perfect
         }
 	)
+def login(request, **kwargs):
+    login_id = kwargs['pk']
+    return render(
+        request,
+        'trackspot/login.html',
+        context = {
+        }
+    )
+        
+
+
 
 def user(request, **kwargs):
     user_id = kwargs['pk']
@@ -243,3 +256,80 @@ class UserDetailView(generic.DetailView):
     # user_id = kwargs['pk']
     model = User
     template_name='trackspot/user.html'
+
+
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView
+
+
+class edit_trackspotter(UpdateView):
+    model = Profile
+    fields = {'name', 'bio', 'location', 'profile_pic'}
+    initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': ''}
+
+    def get_success_url(self):
+       user_id=self.request.user.id
+       return reverse('user', kwargs={'pk':user_id})
+
+class edit_critic(UpdateView):
+    model = Profile
+    fields = {'name', 'bio', 'location', 'profile_pic', 'organization'}
+    initial = {'name': '', 'location': '', 'bio': '', 'profile_pic': '', 'organization': ''}
+
+    def get_success_url(self):
+       user_id=self.request.user.id
+       return reverse('user', kwargs={'pk':user_id})
+#def edit_profile(request, pk):
+#    user_instance = get_object_or_404(User, pk=pk)
+#    if request.method == 'POST':
+#        form = user_profile_form(request.POST)
+#        if form.is_valid():
+#            user_instance.name = form.cleaned_data['name']
+#            user_instance.location = form.cleaned_data['location']
+#            user_instance.bio = form.cleaned_data['bio']
+#            user_instance.profile_pic = form.cleaned_data['profile_pic']
+#            user_instance.save()
+#            return HttpResponseRedirect(reverse('user'))
+#    else:
+#        form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
+#    return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
+# Hook pages to forms
+# Album
+class AlbumCreate(CreateView):
+	model = Album
+	fields = '__all__'
+
+class AlbumUpdate(UpdateView):
+	model = Album
+	fields = '__all__'
+
+class AlbumDelete(DeleteView):
+	model = Album
+
+# Song
+class SongCreate(CreateView):
+	model = Song
+	fields = '__all__'
+
+class SongUpdate(UpdateView):
+	model = Song
+	fields = '__all__'
+
+class SongDelete(DeleteView):
+	model = Song
+
+# Artist
+class ArtistCreate(CreateView):
+	model = Artist
+	fields = '__all__'
+
+class ArtistUpdate(UpdateView):
+	model = Artist
+	fields = '__all__'
+
+class ArtistDelete(DeleteView):
+	model = Artist
