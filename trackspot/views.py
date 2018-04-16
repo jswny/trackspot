@@ -275,6 +275,9 @@ class edit_trackspotter(UpdateView):
        user_id=self.request.user.id
        return reverse('user', kwargs={'pk':user_id})
 
+    def get_object(self):
+        return Profile.objects.get(pk=self.request.user.profile.id)
+
 class edit_critic(UpdateView):
     model = Profile
     fields = {'name', 'bio', 'location', 'profile_pic', 'organization'}
@@ -283,6 +286,8 @@ class edit_critic(UpdateView):
     def get_success_url(self):
        user_id=self.request.user.id
        return reverse('user', kwargs={'pk':user_id})
+    def get_object(self):
+        return Profile.objects.get(pk=self.request.user.profile.id)
 #def edit_profile(request, pk):
 #    user_instance = get_object_or_404(User, pk=pk)
 #    if request.method == 'POST':
