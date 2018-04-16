@@ -60,15 +60,15 @@
           </li>
 
           {% if user.is_authenticated %}
-		  <li class="nav-item">
-            <a class="nav-link" href="/accounts/logout/"> Logout</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts/logout/"> Logout {{user.profile.name}}</a>
           </li>
-		  {% else %}
+          {% else %}
 		  
-		  <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="/accounts/login/"> Login</a>
           </li>
-		  {% endif %}
+          {% endif %}
         </ul>
       </div>
     </nav>
