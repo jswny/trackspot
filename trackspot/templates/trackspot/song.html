@@ -67,6 +67,11 @@
         <div class="row">
             <div class="col-sm-12">
             <p>
+              <h4>
+            {% if user.is_authenticated %}
+              <a href="{{song.id}}/reviewcreate">Write a Review</a>
+            {% endif %}
+              </h4>
               <h3>
             {% if song_reviews_critics %}
                 <span class="badge badge-success">Critic Score: {{review_user_rating_average_critic}}/{{review_user_rating_perfect}} </span>
@@ -88,6 +93,7 @@
                 </tr>
               </thead>
               <tbody>
+
 			  {% if song_reviews_critics %}
 				{% for critic_review in song_reviews_critics %}
                 <tr>

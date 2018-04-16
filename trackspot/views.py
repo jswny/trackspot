@@ -250,23 +250,6 @@ class UserDetailView(generic.DetailView):
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import edit_profile_form
-
-#Make a check to make sure it's your own profile
-def edit_profile(request, pk):
-    user_instance = get_object_or_404(User, pk=pk)
-    if request.method == 'POST':
-        form = user_profile_form(request.POST)
-        if form.is_valid():
-            user_instance.name = form.cleaned_data['name']
-            user_instance.location = form.cleaned_data['location']
-            user_instance.bio = form.cleaned_data['bio']
-            user_instance.profile_pic = form.cleaned_data['profile_pic']
-            user_instance.save()
-            return HttpResponseRedirect(reverse('user'))
-    else:
-        form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
-    return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
 
 # Hook pages to forms
 # Album
@@ -305,13 +288,48 @@ class ArtistUpdate(UpdateView):
 class ArtistDelete(DeleteView):
 	model = Artist
 
-class ReviewCreate(CreateView):
+class SongReviewCreate(CreateView):
 	model = Review
-	fields = '__all__'
+	fields = {'description', 'rating'}
+	initial = {'description': '', 'rating': ''}
 
-class ReviewUpdate(CreateView):
-	model = Review
-	fields = '__all__'
 
-class ReviewDelete(CreateView):
+	def get_success_url(self):
+		song_id = self.request.song.id
+		return reverse('song', kwargs={'pk':song_id})
+
+class SongReviewUpdate(UpdateView):
 	model = Review
+	fields = {'description', 'rating', 'user', 'song'}
+	disabled = {'user':True, 'song':True}
+
+	def get_success_url(self):
+		user_id = self.request.user.id
+		return reverse('user', kwargs={'pk':user_id})
+
+class SongReviewDelete(DeleteView):
+	model = Review
+	success_url = reverse_lazy('song')
+
+
+class AlbumReviewCreate(CreateView):
+	model = Review
+	fields = {'description', 'rating'}
+	initial = {'description': '', 'rating': ''}
+
+	def get_success_url(self):
+		album_id = self.request.album.id
+		return reverse('album', kwargs={'pk':album_id})
+
+class AlbumReviewUpdate(UpdateView):
+	model = Review
+	fields = {'description', 'rating', 'user', 'album'}
+	disabled = {'user':True, 'album':True}
+
+	def get_success_url(self):
+		user_id = self.request.user.id
+		return reverse('user', kwargs={'pk':user_id})
+
+class AlbumReviewDelete(DeleteView):
+	model = Review
+	success_url = reverse_lazy('album')

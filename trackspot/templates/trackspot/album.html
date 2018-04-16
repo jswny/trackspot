@@ -75,6 +75,11 @@
       {% if review_critic %}
       <div class="row">
         <div class="col-sm-12">
+          <h4>
+          {% if user.is_authenticated %}
+              <a href="{{the_album.id}}/reviewcreate">Write a Review</a>
+          {% endif %}
+          </h4>
           <h4><span class="badge badge-pill badge-danger">Critic Score : {{review_critic_rating_average}} / {{review_critic_rating_perfect}} </span></h4>
         </div>
       </div>
