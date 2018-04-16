@@ -4,6 +4,8 @@ from django.db.models import Sum
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import generic
 from django.contrib.auth.models import User, Group
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -224,6 +226,17 @@ def song(request, **kwargs):
             'review_user_rating_perfect':review_user_rating_perfect
         }
 	)
+def login(request, **kwargs):
+    login_id = kwargs['pk']
+    return render(
+        request,
+        'trackspot/login.html',
+        context = {
+        }
+    )
+        
+
+
 
 def user(request, **kwargs):
     user_id = kwargs['pk']
@@ -284,3 +297,39 @@ class edit_critic(UpdateView):
 #    else:
 #        form = user_profile_form(initial={'name': '', 'location': '', 'bio': '', 'profile_pic': ''})
 #    return render(request, 'trackspot/edit_profile_form.html', {'form': form, 'user_instance': user_instance})
+# Hook pages to forms
+# Album
+class AlbumCreate(CreateView):
+	model = Album
+	fields = '__all__'
+
+class AlbumUpdate(UpdateView):
+	model = Album
+	fields = '__all__'
+
+class AlbumDelete(DeleteView):
+	model = Album
+
+# Song
+class SongCreate(CreateView):
+	model = Song
+	fields = '__all__'
+
+class SongUpdate(UpdateView):
+	model = Song
+	fields = '__all__'
+
+class SongDelete(DeleteView):
+	model = Song
+
+# Artist
+class ArtistCreate(CreateView):
+	model = Artist
+	fields = '__all__'
+
+class ArtistUpdate(UpdateView):
+	model = Artist
+	fields = '__all__'
+
+class ArtistDelete(DeleteView):
+	model = Artist
