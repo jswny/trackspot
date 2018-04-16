@@ -7,7 +7,11 @@ urlpatterns = [
     path('album/<int:pk>', views.album, name='album'),
     path('artist/<int:pk>', views.artist, name='artist'),
     path('song/<int:pk>', views.song, name='song'),
+    path('user/<int:pk>', views.UserDetailView.as_view(), name='user'),
+    path('login/<int:pk>', views.login, name='login'),
     path('user/<int:pk>', views.user, name='user'),
+    path('user/<int:pk>/edit_trackspotter', views.edit_trackspotter.as_view(), name='edit_trackspotter'),
+    path('user/<int:pk>/edit_critic', views.edit_critic.as_view(), name='edit_critic')
 ]
 
 urlpatterns += [
@@ -28,3 +32,4 @@ urlpatterns += [
 	path('song/<int:pk>/reviewdelete/', views.SongReviewDelete.as_view(), name = 'song_review_delete'),
 
 ]
+
