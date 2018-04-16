@@ -226,6 +226,17 @@ def song(request, **kwargs):
             'review_user_rating_perfect':review_user_rating_perfect
         }
 	)
+def login(request, **kwargs):
+    login_id = kwargs['pk']
+    return render(
+        request,
+        'trackspot/login.html',
+        context = {
+        }
+    )
+        
+
+
 
 def user(request, **kwargs):
     user_id = kwargs['pk']

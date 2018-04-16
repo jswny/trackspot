@@ -7,6 +7,8 @@ urlpatterns = [
     path('album/<int:pk>', views.album, name='album'),
     path('artist/<int:pk>', views.artist, name='artist'),
     path('song/<int:pk>', views.song, name='song'),
+    path('user/<int:pk>', views.UserDetailView.as_view(), name='user'),
+    path('login/<int:pk>', views.login, name='login'),
     path('user/<int:pk>', views.user, name='user'),
 ]
 

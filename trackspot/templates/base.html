@@ -58,10 +58,17 @@
             <a class="nav-link" href="#">
               <i class="fas fa-user-plus"></i> Sign Up</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-sign-in-alt"></i> Login</a>
+
+          {% if user.is_authenticated %}
+		  <li class="nav-item">
+            <a class="nav-link" href="/accounts/logout/"> Logout</a>
           </li>
+		  {% else %}
+		  
+		  <li class="nav-item">
+            <a class="nav-link" href="/accounts/login/"> Login</a>
+          </li>
+		  {% endif %}
         </ul>
       </div>
     </nav>
