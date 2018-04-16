@@ -125,7 +125,9 @@ def artist(request, **kwargs):
     artist = Artist.objects.get(pk=artist_id)
     albums = Album.objects.filter(artist__id=artist_id)
 
-
+    albums_same_genre = []
+    top_songs = []
+    
     for album in albums:
         genre = album.genre
         albums_same_genre = Album.objects.filter(genre=genre)
