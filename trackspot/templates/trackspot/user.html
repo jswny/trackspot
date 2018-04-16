@@ -9,7 +9,11 @@
   <div class="col-lg-6">
     <h1>Profile 
       {% ifequal request.user.id user.id %}
-      <u><a href="https://www.google.com/" style="font-size: 20px;">Edit</a></u>
+        {% if user.profile.organization %}
+          <u><a href="{% url 'edit_critic' request.user.profile.id %}" style="font-size: 20px;">Edit</a></u>
+        {% else %}
+          <u><a href="{% url 'edit_trackspotter' request.user.profile.id %}" style="font-size: 20px;">Edit</a></u>
+        {% endif %}
       {% endifequal %}
     </h1>
   </div>
