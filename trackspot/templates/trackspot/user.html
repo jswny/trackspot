@@ -27,7 +27,11 @@
   <!-- Profile -->
   <div class="col-lg-6 profile">
     <div class='col-lg-4'>
-      <img id="pic" src=https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png>
+      {% if user.profile.profile_pic %}
+        <img id="pic" src="{{user.profile.profile_pic}}"/>
+      {% else %}
+        <img id="pic" src=https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png>
+      {% endif %}
     </div>
     <div class="col-lg-8 textbox" style="width:200px; height:200px">
       <p>Name: {{user.profile.name}}</p>
