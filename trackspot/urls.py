@@ -27,7 +27,8 @@ urlpatterns += [
 	path('album/<int:pk>/reviewcreate/', views.AlbumReviewCreate.as_view(), name = 'album_review_create'),
 	path('user/<int:pk>/reviewupdate/', views.AlbumReviewUpdate.as_view(), name = 'album_review_update'),
 	path('album/<int:pk>/reviewdelete/', views.AlbumReviewDelete.as_view(), name = 'album_review_delete'),
-	path('song/<int:pk>/reviewcreate/', views.SongReviewCreate.as_view(), name = 'song_review_create'),
+	path('song/<int:pk>/reviewcreate/', views.create_song_review, name = 'review_form'),
+	#path('user/<int:pk>/reviewcreate/', views.SongReviewCreate.as_view(), name = 'song_review_update'),
 	path('user/<int:pk>/reviewupdate/', views.SongReviewUpdate.as_view(), name = 'song_review_update'),
 	path('song/<int:pk>/reviewdelete/', views.SongReviewDelete.as_view(), name = 'song_review_delete'),
 

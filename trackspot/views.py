@@ -263,7 +263,6 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
@@ -337,15 +336,41 @@ class ArtistUpdate(UpdateView):
 class ArtistDelete(DeleteView):
 	model = Artist
 
+from .forms import review_form
+
+def create_song_review(request, pk):
+    song_review = get_object_or_404(Review, pk = pk)
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = review_form(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            song_review.user = request.user
+            song_review.save()
+
+            # redirect to a new URL:
+            user_id = request.user.id
+            return reverse('user', kwargs={'pk':user_id})
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = review_form(initial={'review': '', 'rating': ''})
+    return render(request, 'trackspot/review_form.html', {'form': form, 'song_review': song_review})
+
 class SongReviewCreate(CreateView):
 	model = Review
-	fields = {'description', 'rating'}
-	initial = {'description': '', 'rating': ''}
-
+	fields = {'description', 'rating', 'user'}
+	initial = {'description': '', 'rating': '', 'user': ''}
 
 	def get_success_url(self):
 		song_id = self.request.song.id
 		return reverse('song', kwargs={'pk':song_id})
+
+
 
 class SongReviewUpdate(UpdateView):
 	model = Review
