@@ -41,9 +41,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/trackspot/song/1">Songs</a>
           </li>
-          {% if request.user.is_authenticated %}
+          {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/trackspot/user/{{request.user.id}}">User Profile</a>
+              <a class="nav-link" href="/trackspot/user/{{user.id}}">User Profile</a>
             </li>
           {% endif %}
         </ul>
