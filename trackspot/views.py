@@ -359,7 +359,7 @@ def create_song_review(request, pk):
 
             # redirect to a new URL:
             user_id = request.user.id
-            return HttpResponseRedirect(reverse('user', kwargs={'pk':user_id}))
+            return HttpResponseRedirect(reverse('song', kwargs={'pk':pk}))
 
     # If this is a GET (or any other method) create the default form.
     else:
@@ -386,8 +386,7 @@ def create_album_review(request, pk):
             review.save()
 
             # redirect to a new URL:
-            user_id = request.user.id
-            return HttpResponseRedirect(reverse('user', kwargs={'pk':user_id}))
+            return HttpResponseRedirect(reverse('album', kwargs={'pk':pk}))
 
     # If this is a GET (or any other method) create the default form.
     else:

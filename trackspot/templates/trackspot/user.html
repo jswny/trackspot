@@ -84,9 +84,9 @@
     <div class="col-lg-2"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
   {% endif %}
   {% if review.album %}
-    <div class="col-lg-8"><a href="{{review.album.id}}/reviewupdate">{{review.description}}</a></div>
+    <div class="col-lg-8">{{review.description}}</div>
   {% else %}
-    <div class="col-lg-8"><a href="{{review.song.id}}/reviewupdate">{{review.description}}</a></div>
+    <div class="col-lg-8">{{review.description}}</div>
   {% endif %}
 
   <div class="col-lg-2">{{review.rating}}</div>
