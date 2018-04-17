@@ -200,21 +200,21 @@ def song(request, **kwargs):
 
     song_reviews_users = Review.objects.filter(song__id=song.id).filter(user__groups=trackspotters)
     song_reviews_critics = Review.objects.filter(song__id=song.id).filter(user__groups=critics)
-	
+    print(song_reviews_critics)
     review_user_count_critic = song_reviews_critics.count()
     review_user_rating_total_critic = song_reviews_critics.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_critic != 0):
         review_user_rating_average_critic = int(round(review_user_rating_total_critic / review_user_count_critic))
     else:
         review_user_rating_average_critic = 'No Reviews'
-	
+    
     review_user_count_user = song_reviews_users.count()
     review_user_rating_total_user = song_reviews_users.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_user != 0):
         review_user_rating_average_user = int(round(review_user_rating_total_user / review_user_count_user))
     else:
-	    review_user_rating_average_user = 'No Reviews'
-	
+        review_user_rating_average_user = 'No Reviews'
+    
     return render(
         request, 
         'trackspot/song.html',
@@ -227,7 +227,7 @@ def song(request, **kwargs):
             'review_user_rating_average_user':review_user_rating_average_user,
             'review_user_rating_perfect':review_user_rating_perfect
         }
-	)
+    )
 def login(request, **kwargs):
     login_id = kwargs['pk']
     return render(
@@ -302,46 +302,47 @@ class edit_critic(UpdateView):
 # Hook pages to forms
 # Album
 class AlbumCreate(CreateView):
-	model = Album
-	fields = '__all__'
+    model = Album
+    fields = '__all__'
 
 class AlbumUpdate(UpdateView):
-	model = Album
-	fields = '__all__'
+    model = Album
+    fields = '__all__'
 
 class AlbumDelete(DeleteView):
-	model = Album
+    model = Album
 
 # Song
 class SongCreate(CreateView):
-	model = Song
-	fields = '__all__'
+    model = Song
+    fields = '__all__'
 
 class SongUpdate(UpdateView):
-	model = Song
-	fields = '__all__'
+    model = Song
+    fields = '__all__'
 
 class SongDelete(DeleteView):
-	model = Song
+    model = Song
 
 # Artist
 class ArtistCreate(CreateView):
-	model = Artist
-	fields = '__all__'
+    model = Artist
+    fields = '__all__'
 
 class ArtistUpdate(UpdateView):
-	model = Artist
-	fields = '__all__'
+    model = Artist
+    fields = '__all__'
 
 class ArtistDelete(DeleteView):
-	model = Artist
+    model = Artist
 
 from .forms import review_form
 
 def create_song_review(request, pk):
-    song_review = get_object_or_404(Review, pk = pk)
+    song = get_object_or_404(Song, pk = pk)
+    song_review = Review()
 
-    # If this is a POST request then process the Form data
+    # If this is a POST request then proces the Form data
     if request.method == 'POST':
 
         # Create a form instance and populate it with data from the request (binding):
@@ -349,12 +350,16 @@ def create_song_review(request, pk):
 
         # Check if the form is valid:
         if form.is_valid():
+            print(form.cleaned_data)
             song_review.user = request.user
+            song_review.rating = form.cleaned_data['rating']
+            song_review.description = form.cleaned_data['description']
+            song_review.song_id = pk
             song_review.save()
 
             # redirect to a new URL:
             user_id = request.user.id
-            return reverse('user', kwargs={'pk':user_id})
+            return HttpResponseRedirect(reverse('user', kwargs={'pk':user_id}))
 
     # If this is a GET (or any other method) create the default form.
     else:
@@ -362,48 +367,48 @@ def create_song_review(request, pk):
     return render(request, 'trackspot/review_form.html', {'form': form, 'song_review': song_review})
 
 class SongReviewCreate(CreateView):
-	model = Review
-	fields = {'description', 'rating', 'user'}
-	initial = {'description': '', 'rating': '', 'user': ''}
+    model = Review
+    fields = {'description', 'rating', 'user'}
+    initial = {'description': '', 'rating': '', 'user': ''}
 
-	def get_success_url(self):
-		song_id = self.request.song.id
-		return reverse('song', kwargs={'pk':song_id})
+    def get_success_url(self):
+        song_id = self.request.song.id
+        return reverse('song', kwargs={'pk':song_id})
 
 
 
 class SongReviewUpdate(UpdateView):
-	model = Review
-	fields = {'description', 'rating', 'user', 'song'}
-	disabled = {'user':True, 'song':True}
+    model = Review
+    fields = {'description', 'rating', 'user', 'song'}
+    disabled = {'user':True, 'song':True}
 
-	def get_success_url(self):
-		user_id = self.request.user.id
-		return reverse('user', kwargs={'pk':user_id})
+    def get_success_url(self):
+        user_id = self.request.user.id
+        return reverse('user', kwargs={'pk':user_id})
 
 class SongReviewDelete(DeleteView):
-	model = Review
-	success_url = reverse_lazy('song')
+    model = Review
+    success_url = reverse_lazy('song')
 
 
 class AlbumReviewCreate(CreateView):
-	model = Review
-	fields = {'description', 'rating'}
-	initial = {'description': '', 'rating': ''}
+    model = Review
+    fields = {'description', 'rating'}
+    initial = {'description': '', 'rating': ''}
 
-	def get_success_url(self):
-		album_id = self.request.album.id
-		return reverse('album', kwargs={'pk':album_id})
+    def get_success_url(self):
+        album_id = self.request.album.id
+        return reverse('album', kwargs={'pk':album_id})
 
 class AlbumReviewUpdate(UpdateView):
-	model = Review
-	fields = {'description', 'rating', 'user', 'album'}
-	disabled = {'user':True, 'album':True}
+    model = Review
+    fields = {'description', 'rating', 'user', 'album'}
+    disabled = {'user':True, 'album':True}
 
-	def get_success_url(self):
-		user_id = self.request.user.id
-		return reverse('user', kwargs={'pk':user_id})
+    def get_success_url(self):
+        user_id = self.request.user.id
+        return reverse('user', kwargs={'pk':user_id})
 
 class AlbumReviewDelete(DeleteView):
-	model = Review
-	success_url = reverse_lazy('album')
+    model = Review
+    success_url = reverse_lazy('album')
