@@ -3,6 +3,9 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
+class review_form(forms.Form):
+	description = forms.CharField(help_text= "What did you think?", max_length = 500)
+	rating = forms.IntegerField(help_text = "From 0 to 100", max_value = 100)
 
 class edit_profile_form(forms.Form):
 	name = forms.CharField(help_text="Your name.", max_length=50)
@@ -16,4 +19,3 @@ class edit_critic_form(forms.Form):
 	bio = forms.CharField(help_text="Bio (Max 500 characters)", max_length=500)
 	profile_pic = forms.URLField(help_text="Enter an image URL", max_length=500)
 	organization = forms.CharField(help_text="Enter your organization", max_length=50)
-

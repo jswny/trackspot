@@ -50,13 +50,7 @@
     </div>
     {% for review in user.sorted_reviews %}
     <div class="row">
-      {% if review.album %}
-        <div class="col-lg-4"><a href="{{review.album.get_absolute_url}}">{{review.album}}</a></div>
-        <div class="col-lg-4"><a href="{{review.album.artist.get_absolute_url}}">{{review.album.artist}}</a></div>
-      {% else %}
-        <div class="col-lg-4"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
-        <div class="col-lg-4"><a href="{{review.song.album.artist.get_absolute_url}}">{{review.song.album.artist}}</a></div>
-      {% endif %}
+      <div class="col-lg-8">{{review.description}}</div>
       
       <div id="play-icon" class="col-lg-4">
         <i class="far fa-play-circle"></i>
@@ -89,7 +83,12 @@
   {% else %}
     <div class="col-lg-2"><a href="{{review.song.get_absolute_url}}">{{review.song}}</a></div>
   {% endif %}
-  <div class="col-lg-8">{{review.description}}</div>
+  {% if review.album %}
+    <div class="col-lg-8"><a href="{{review.album.id}}/reviewupdate">{{review.description}}</a></div>
+  {% else %}
+    <div class="col-lg-8"><a href="{{review.song.id}}/reviewupdate">{{review.description}}</a></div>
+  {% endif %}
+
   <div class="col-lg-2">{{review.rating}}</div>
 </div>
 {% endfor %}
