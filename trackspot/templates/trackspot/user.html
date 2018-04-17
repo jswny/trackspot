@@ -97,9 +97,9 @@
   {% endif %}
   <div class="col-lg-8">{{review.description}}</div>
   <div class="col-lg-1">{{review.rating}}</div>
-  {% ifequal request.user.id user.id %}
+ <!--  {% ifequal request.user.id user.id %}
   <div class="col-lg-1"><a href="">Edit</a></div>
-  {% endifequal %}
+  {% endifequal %} -->
 </div>
 {% endfor %}
 {% endblock %}
