@@ -65,7 +65,7 @@ def album(request, **kwargs):
         review_critic_rating_average = float("{0:.1f}".format(review_critic_rating_total / review_critic_count))
 
     # User Review
-    review_user = Review.objects.filter(album=album_id).filter(user__groups=critics)
+    review_user = Review.objects.filter(album=album_id).filter(user__groups=trackspotters)
     review_user_count = review_user.count()
     review_user_rating_perfect = 100    
     review_user_rating_total = review_user.aggregate(Sum('rating'))['rating__sum']
@@ -200,7 +200,7 @@ def song(request, **kwargs):
 
     song_reviews_users = Review.objects.filter(song__id=song.id).filter(user__groups=trackspotters)
     song_reviews_critics = Review.objects.filter(song__id=song.id).filter(user__groups=critics)
-    print(song_reviews_critics)
+    
     review_user_count_critic = song_reviews_critics.count()
     review_user_rating_total_critic = song_reviews_critics.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_critic != 0):
@@ -340,7 +340,7 @@ from .forms import review_form
 
 def create_song_review(request, pk):
     song = get_object_or_404(Song, pk = pk)
-    song_review = Review()
+    review = Review()
 
     # If this is a POST request then proces the Form data
     if request.method == 'POST':
@@ -351,11 +351,11 @@ def create_song_review(request, pk):
         # Check if the form is valid:
         if form.is_valid():
             print(form.cleaned_data)
-            song_review.user = request.user
-            song_review.rating = form.cleaned_data['rating']
-            song_review.description = form.cleaned_data['description']
-            song_review.song_id = pk
-            song_review.save()
+            review.user = request.user
+            review.rating = form.cleaned_data['rating']
+            review.description = form.cleaned_data['description']
+            review.song_id = pk
+            review.save()
 
             # redirect to a new URL:
             user_id = request.user.id
@@ -364,51 +364,79 @@ def create_song_review(request, pk):
     # If this is a GET (or any other method) create the default form.
     else:
         form = review_form(initial={'review': '', 'rating': ''})
-    return render(request, 'trackspot/review_form.html', {'form': form, 'song_review': song_review})
+    return render(request, 'trackspot/review_form.html', {'form': form, 'review': review})
 
-class SongReviewCreate(CreateView):
-    model = Review
-    fields = {'description', 'rating', 'user'}
-    initial = {'description': '', 'rating': '', 'user': ''}
+def create_album_review(request, pk):
+    album = get_object_or_404(Album, pk = pk)
+    review = Review()
 
-    def get_success_url(self):
-        song_id = self.request.song.id
-        return reverse('song', kwargs={'pk':song_id})
+    # If this is a POST request then proces the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = review_form(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            print(form.cleaned_data)
+            review.user = request.user
+            review.rating = form.cleaned_data['rating']
+            review.description = form.cleaned_data['description']
+            review.album_id = pk
+            review.save()
+
+            # redirect to a new URL:
+            user_id = request.user.id
+            return HttpResponseRedirect(reverse('user', kwargs={'pk':user_id}))
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = review_form(initial={'review': '', 'rating': ''})
+    return render(request, 'trackspot/review_form.html', {'form': form, 'review': review})
+
+# class SongReviewCreate(CreateView):
+#     model = Review
+#     fields = {'description', 'rating', 'user'}
+#     initial = {'description': '', 'rating': '', 'user': ''}
+
+#     def get_success_url(self):
+#         song_id = self.request.song.id
+#         return reverse('song', kwargs={'pk':song_id})
 
 
 
-class SongReviewUpdate(UpdateView):
-    model = Review
-    fields = {'description', 'rating', 'user', 'song'}
-    disabled = {'user':True, 'song':True}
+# class SongReviewUpdate(UpdateView):
+#     model = Review
+#     fields = {'description', 'rating', 'user', 'song'}
+#     disabled = {'user':True, 'song':True}
 
-    def get_success_url(self):
-        user_id = self.request.user.id
-        return reverse('user', kwargs={'pk':user_id})
+#     def get_success_url(self):
+#         user_id = self.request.user.id
+#         return reverse('user', kwargs={'pk':user_id})
 
-class SongReviewDelete(DeleteView):
-    model = Review
-    success_url = reverse_lazy('song')
+# class SongReviewDelete(DeleteView):
+#     model = Review
+#     success_url = reverse_lazy('song')
 
 
-class AlbumReviewCreate(CreateView):
-    model = Review
-    fields = {'description', 'rating'}
-    initial = {'description': '', 'rating': ''}
+# class AlbumReviewCreate(CreateView):
+#     model = Review
+#     fields = {'description', 'rating'}
+#     initial = {'description': '', 'rating': ''}
 
-    def get_success_url(self):
-        album_id = self.request.album.id
-        return reverse('album', kwargs={'pk':album_id})
+#     def get_success_url(self):
+#         album_id = self.request.album.id
+#         return reverse('album', kwargs={'pk':album_id})
 
-class AlbumReviewUpdate(UpdateView):
-    model = Review
-    fields = {'description', 'rating', 'user', 'album'}
-    disabled = {'user':True, 'album':True}
+# class AlbumReviewUpdate(UpdateView):
+#     model = Review
+#     fields = {'description', 'rating', 'user', 'album'}
+#     disabled = {'user':True, 'album':True}
 
-    def get_success_url(self):
-        user_id = self.request.user.id
-        return reverse('user', kwargs={'pk':user_id})
+#     def get_success_url(self):
+#         user_id = self.request.user.id
+#         return reverse('user', kwargs={'pk':user_id})
 
-class AlbumReviewDelete(DeleteView):
-    model = Review
-    success_url = reverse_lazy('album')
+# class AlbumReviewDelete(DeleteView):
+#     model = Review
+#     success_url = reverse_lazy('album')
