@@ -65,7 +65,7 @@ def album(request, **kwargs):
         review_critic_rating_average = float("{0:.1f}".format(review_critic_rating_total / review_critic_count))
 
     # User Review
-    review_user = Review.objects.filter(album=album_id).filter(user__groups=critics)
+    review_user = Review.objects.filter(album=album_id).filter(user__groups=trackspotters)
     review_user_count = review_user.count()
     review_user_rating_perfect = 100    
     review_user_rating_total = review_user.aggregate(Sum('rating'))['rating__sum']
@@ -200,21 +200,21 @@ def song(request, **kwargs):
 
     song_reviews_users = Review.objects.filter(song__id=song.id).filter(user__groups=trackspotters)
     song_reviews_critics = Review.objects.filter(song__id=song.id).filter(user__groups=critics)
-	
+    
     review_user_count_critic = song_reviews_critics.count()
     review_user_rating_total_critic = song_reviews_critics.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_critic != 0):
         review_user_rating_average_critic = int(round(review_user_rating_total_critic / review_user_count_critic))
     else:
         review_user_rating_average_critic = 'No Reviews'
-	
+    
     review_user_count_user = song_reviews_users.count()
     review_user_rating_total_user = song_reviews_users.aggregate(Sum('rating'))['rating__sum']
     if(review_user_count_user != 0):
         review_user_rating_average_user = int(round(review_user_rating_total_user / review_user_count_user))
     else:
-	    review_user_rating_average_user = 'No Reviews'
-	
+        review_user_rating_average_user = 'No Reviews'
+    
     return render(
         request, 
         'trackspot/song.html',
@@ -227,7 +227,7 @@ def song(request, **kwargs):
             'review_user_rating_average_user':review_user_rating_average_user,
             'review_user_rating_perfect':review_user_rating_perfect
         }
-	)
+    )
 def login(request, **kwargs):
     login_id = kwargs['pk']
     return render(
@@ -259,10 +259,10 @@ class UserDetailView(generic.DetailView):
     model = User
     template_name='trackspot/user.html'
 
-
-
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
@@ -307,36 +307,94 @@ class edit_critic(UpdateView):
 # Hook pages to forms
 # Album
 class AlbumCreate(CreateView):
-	model = Album
-	fields = '__all__'
+    model = Album
+    fields = '__all__'
 
 class AlbumUpdate(UpdateView):
-	model = Album
-	fields = '__all__'
+    model = Album
+    fields = '__all__'
 
 class AlbumDelete(DeleteView):
-	model = Album
+    model = Album
 
 # Song
 class SongCreate(CreateView):
-	model = Song
-	fields = '__all__'
+    model = Song
+    fields = '__all__'
 
 class SongUpdate(UpdateView):
-	model = Song
-	fields = '__all__'
+    model = Song
+    fields = '__all__'
 
 class SongDelete(DeleteView):
-	model = Song
+    model = Song
 
 # Artist
 class ArtistCreate(CreateView):
-	model = Artist
-	fields = '__all__'
+    model = Artist
+    fields = '__all__'
 
 class ArtistUpdate(UpdateView):
-	model = Artist
-	fields = '__all__'
+    model = Artist
+    fields = '__all__'
 
 class ArtistDelete(DeleteView):
-	model = Artist
+    model = Artist
+
+from .forms import review_form
+
+def create_song_review(request, pk):
+    song = get_object_or_404(Song, pk = pk)
+    review = Review()
+
+    # If this is a POST request then proces the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = review_form(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            print(form.cleaned_data)
+            review.user = request.user
+            review.rating = form.cleaned_data['rating']
+            review.description = form.cleaned_data['description']
+            review.song_id = pk
+            review.save()
+
+            # redirect to a new URL:
+            user_id = request.user.id
+            return HttpResponseRedirect(reverse('user', kwargs={'pk':user_id}))
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = review_form(initial={'review': '', 'rating': ''})
+    return render(request, 'trackspot/review_form.html', {'form': form, 'review': review})
+
+def create_album_review(request, pk):
+    album = get_object_or_404(Album, pk = pk)
+    review = Review()
+
+    # If this is a POST request then proces the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = review_form(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            print(form.cleaned_data)
+            review.user = request.user
+            review.rating = form.cleaned_data['rating']
+            review.description = form.cleaned_data['description']
+            review.album_id = pk
+            review.save()
+
+            # redirect to a new URL:
+            user_id = request.user.id
+            return HttpResponseRedirect(reverse('user', kwargs={'pk':user_id}))
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = review_form(initial={'review': '', 'rating': ''})
+    return render(request, 'trackspot/review_form.html', {'form': form, 'review': review})
