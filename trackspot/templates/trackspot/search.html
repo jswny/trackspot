@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+
+    <h1 style="text-align: center;">Search: {{query}}</h1>
+    
+    {% if artists %}
+    <div class="home-section">
+      <h2 class="home-section-header">Artists</h2>
+        <ol>
+            {% for artist in artists %}
+                <li><a href="{{artist.get_absolute_url}}">{{artist.name}}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+
+    {% if albums %}
+    <div class="home-section">
+      <h2 class="home-section-header">Albums</h2>
+        <ol>
+            {% for album in albums %}
+                <li><a href="{{album.get_absolute_url}}">{{album.name}} -- {{album.artist.name}}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+
+    {% if songs %}
+    <div class="home-section">
+      <h2 class="home-section-header">Songs</h2>
+        <ol>
+            {% for song in songs %}
+                <li><a href="{{song.get_absolute_url}}">{{song.name}} -- {{song.album.artist.name}}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+
+    {% if critics %}
+    <div class="home-section">
+      <h2 class="home-section-header">Critics</h2>
+        <ol>
+            {% for critic in critics %}
+                <li><a href="{{critic.get_absolute_url}}">{{critic.profile.name}}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+
+    {% if trackspotters %}
+    <div class="home-section">
+      <h2 class="home-section-header">Trackspotters</h2>
+        <ol>
+            {% for trackspotter in trackspotters %}
+                <li><a href="{{trackspotter.get_absolute_url}}">{{trackspotter.profile.name}}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+
+    {% if not artists and not albums and not songs and not critics and not trackspotters %}
+    <div class="home-section">
+      <h2 class="home-section-header">No results!</h2>
+    </div>
+    {% endif %}
+
+  </div>
+
+</div>
+{% endblock %}

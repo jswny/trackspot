@@ -398,3 +398,25 @@ def create_album_review(request, pk):
     else:
         form = review_form(initial={'review': '', 'rating': ''})
     return render(request, 'trackspot/review_form.html', {'form': form, 'review': review})
+
+def search(request):
+    query = request.GET.get('q')
+
+    artists = Artist.objects.filter(name__contains=query)
+    albums = Album.objects.filter(name__contains=query)
+    songs = Song.objects.filter(name__contains=query)
+    critics = User.objects.filter(groups__name='Critics').filter(profile__name__contains=query)
+    trackspotters = User.objects.filter(groups__name='Trackspotters').filter(profile__name__contains=query)
+
+    return render(
+        request, 
+        'trackspot/search.html', 
+        {
+            'query': query,
+            'artists': artists,
+            'albums': albums,
+            'songs': songs,
+            'critics': critics,
+            'trackspotters': trackspotters,
+        }
+    )

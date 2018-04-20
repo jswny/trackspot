@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
@@ -11,7 +11,8 @@ urlpatterns = [
     path('login/<int:pk>', views.login, name='login'),
     path('user/<int:pk>', views.user, name='user'),
     path('user/edit_trackspotter', views.edit_trackspotter.as_view(), name='edit_trackspotter'),
-    path('user/edit_critic', views.edit_critic.as_view(), name='edit_critic')
+    path('user/edit_critic', views.edit_critic.as_view(), name='edit_critic'),
+	re_path(r'^search/$', views.search, name='search'),
 ]
 
 urlpatterns += [
